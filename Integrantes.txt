@@ -1,0 +1,12 @@
+Gestion de Bibloteca Online:
+
+Integrantes: Kelvin A. Moreno, Basthian Bascuñan.
+
+Estructura:
+
+- Login
+- Home page
+- Catalogo de libros
+- Descarga de eBooks
+- Donde Comprar (Presencial)
+- Contacto
