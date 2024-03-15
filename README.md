@@ -1,6 +1,6 @@
-# Ejercicios de Programación Web
+# Programación Web
 
-¡Bienvenido al repositorio de ejercicios de la clase de Programación Web!
+¡Bienvenido al repositorio del proyecto de la clase de Programación Web!
 
 ## Acerca del Repositorio
 
