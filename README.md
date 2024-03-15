@@ -1,10 +1,10 @@
 # Programación Web
 
-¡Bienvenido al repositorio del proyecto de la clase de Programación Web!
+¡Bienvenido al repositorio del proyecto semestral de la clase de Programación Web!
 
 ## Acerca del Repositorio
 
-Este repositorio se ha creado con el propósito de proporcionar un espacio centralizado donde puedas acceder a ejercicios prácticos, recursos útiles y materiales de estudio relacionados con la programación web.
+Este repositorio se ha creado con el propósito de proporcionar un espacio centralizado al proyecto semestral de la clase de programacion web.
 
 ## Contacto
 - Email: kelvin.morenog28@gmail.com
