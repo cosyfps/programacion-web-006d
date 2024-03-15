@@ -1,6 +1,7 @@
 Gestion de Bibloteca Online:
+Integrantes: Kelvin A. Moreno, Basthian Bascuñan, Benjamin Hidalgo.
 
-Integrantes: Kelvin A. Moreno, Basthian Bascuñan.
+--------------------------------------------------------------------------------
 
 Estructura:
 
