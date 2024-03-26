@@ -10,34 +10,91 @@
     <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico" />
     <!-- CSS -->
     <link href="/static/css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    
-    <!-- Header -->
-    <header>
-        <nav id="mainNav">
-            <div>
-                <a href="homepage.html" style="background-image: url('/static/assets/favicon.ico'); width: 50px; height: 50px; background-position: center; background-size: contain;"></a>
-                <p href="homepage.html">BiblioWeb</p>
-                <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i></i>
+    <style>
+        body{
+            background-color: black;
+        }
+        /* Estilos personalizados para el navbar */
+        .navbar {
+        background-color: transparent !important; /* Hacer el fondo transparente */
+        }
+
+        .navbar-brand, .navbar-nav .nav-link {
+        color: #fff; /* Color del texto */
+        }
+
+        .navbar-nav .nav-link:hover {
+        color: #ccc; /* Cambiar color del texto al pasar el cursor */
+        }
+        h1{
+            color: #ccc;
+        }
+
+        h2{
+            color: #ccc;
+        }
+        p{
+            color: #ccc;
+            text-align: justify;
+        }
+        #infotxt{
+            background-color: rgba(111, 25, 25, 0.72);
+        }
+        </style>
+    <!-- Content -->
+
+    <div class="container-sm" style="background-image: url(/static/assets/img/bg3.png); background-repeat: no-repeat; background-size:cover;">
+        <!-- INICIO NAVBAR -->
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                <a class="navbar-brand" href="#"><img src="/static/assets/img/LOGO.svg" style="width:6rem;" alt=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color: #ccc;">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <div id="navbarResponsive">
-                    <ul>
-                        <li><a href="homepage.html">Home</a></li>
-                        <li><a href="catalogue.html">Catalogue</a></li>
-                        <li><a href="download.html">Download</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="singin.html">Login</a></li>
+            
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto text-center"> <!-- Clase text-center para alinear al centro -->
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Catalogue</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Download</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sign In</a>
+                    </li>
                     </ul>
                 </div>
             </div>
+        </div>
+        <!--FIN NAVBAR-->
+        <!--INICIO CONTENIDO-->
+        <div class="row" style="padding-top: 4rem;">
+            <div class="col" style="display: flex; justify-content: center; align-items: center;">
+                <img src="/static/assets/img/PORTADAS/el-arte-de-la-guerra.png" alt="">
+            </div>
+            <div class="col" id="infotxt">
+                <h1>El Arte de la guerra</h1>
+                <h2>Sun Tzu</h2>
+                <p>"El Arte de la Guerra" es un tratado militar clásico escrito por el estratega chino Sun Tzu, probablemente en el siglo V a.C. Aunque es un texto antiguo, su relevancia ha perdurado a lo largo de los siglos debido a sus sabias reflexiones sobre estrategia, táctica y liderazgo. En sus trece capítulos, Sun Tzu ofrece consejos atemporales sobre cómo planificar y llevar a cabo una guerra con éxito, haciendo hincapié en la importancia de la preparación, el conocimiento del terreno y del enemigo, la flexibilidad y la astucia. Sin embargo, su aplicación trasciende el ámbito militar y se extiende a la estrategia empresarial, la política y la vida cotidiana, convirtiéndolo en una obra de referencia no solo para los líderes militares, sino también para aquellos que buscan alcanzar sus objetivos con inteligencia y eficacia en cualquier campo.</p>
+            </div>
+        </div>
+    </div>
         </nav>
-    </header>
-    
-    <h1>Descarga</h1> 
+
+
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -66,5 +123,8 @@
             </div>
         </div>
     </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>  
 </body>
 </html>
