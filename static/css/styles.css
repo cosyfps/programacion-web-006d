@@ -75,3 +75,32 @@ nav li a:hover::after {
     height: 2px; 
     background-color: rgb(255, 255, 255); 
 }
+
+#infotxt{
+    background-color: brown;
+    color: aliceblue;
+}
+
+#infobook{
+    background-color: black;
+}
+
+#tittlebk {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700
+    ;
+}
+
+#autorbk{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300
+}
+
+#reviewbk{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    text-align: justify;
+}
