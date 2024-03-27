@@ -10,6 +10,11 @@
     <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico" />
     <!-- CSS -->
     <link href="/static/css/styles.css" rel="stylesheet" />
+    <style>
+    body {
+        color: white;
+    }
+    </style>
     <!-- Font Awesome (Icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -39,17 +44,23 @@
     <!-- Content -->
     <div class="container">
         <h1>Catálogo de libros</h1>
-        <div class="row">
+        <div class="col-md-4">
             <!-- Aquí van los elementos del catálogo -->
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="/static/assets/book1.jpg" class="card-img-top" alt="Libro 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Título Libro 1</h5>
-                        <p class="card-text">Descripción libro 1.</p>
-                        <a href="#" class="btn btn-primary">Ver detalles</a>
-                    </div>
-                </div>
+            <table border="1">
+                <tr>
+                  <th>#</th>
+                  <th>Nombre</th>
+                  <th>Autor</th>
+                  <th>Año de publicacion</th>
+                  <th>Correo</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Juanito</td>
+                  <td>Perez</td>
+                  <td>20</td>
+                  <td>qFQp7@example.com</td>
+                </tr>
             </div>
             <div class="col-md-4">
                 <div class="card">
