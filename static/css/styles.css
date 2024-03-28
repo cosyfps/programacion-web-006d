@@ -6,8 +6,8 @@
 }
 
 body{
-    background:  url(/static/assets/img/bg3.png) no-repeat;
     background-color: black;
+    background:  url(/static/assets/img/bg3.png) no-repeat;
     height: 90vh;
     background-size:contain;
     background-position: center top;
@@ -83,7 +83,14 @@ nav li a:hover::after {
 
 }
 
-#infobook{
+@media screen and (max-width: 992px) {
+    #infotxt{
+        background-color: transparent;
+    }
+
+    #reviewbk{
+        font-size: 1.5rem;
+    }
 }
 
 #tittlebk {
