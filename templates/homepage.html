@@ -10,16 +10,11 @@
     <link rel="icon" type="image/x-icon" href="/static/assets/favicon.ico" />
     <!-- CSS -->
     <link href="/static/css/styles.css" rel="stylesheet" />
-    <style>
-        body {
-            color: white;
-        }
-        </style>
     <!-- Font Awesome (Icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
-<body>
+<body style="background-color: black;">
     
     <!-- Header -->
     <header>
@@ -43,35 +38,38 @@
 
     <!-- Content -->
     <div class="container">
-        <!-- TODO: Agregar logo y texto de bienvenida -->
+        <div class="column">
+            <img src="/static/assets/img/logo2.png" alt="">
+        </div>
+        <div class="column">
+            <span>
+                La lectura es la llave que abre las puertas al conocimiento, la
+                imaginación y el entendimiento, permitiéndonos explorar mundos
+                infinitos sin movernos del sitio.
+            </span>
+            <div class="button-container">
+                <a href="catalogue.html"><button>Empieza a leer</button></a>
+            </div>
+        </div>
     </div>
+    
+    <form id="search-form">
+        <input type="text" name="barra-busqueda" id="barra-busqueda" placeholder="Escribe el título o autor del libro que necesitas">
+        <button type="submit">Buscar</button>
+    </form>
 
     <!-- Footer -->
     <footer>
         <div>
             <div>
                 <ul>
-                    <li>
-                        <a href="#!">
-                            <span></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#!">
-                            <span></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#!">
-                            <span></span>
-                        </a>
-                    </li>
+                    <li><a href="#!"><span></span></a></li>
+                    <li><a href="#!"><span></span></a></li>
+                    <li><a href="#!"><span></span></a></li>
                 </ul>
-                <div>
-                    Copyright &copy; BiblioWeb 2024
-                </div>
+                <div>Copyright &copy; BiblioWeb 2024</div>
             </div>
         </div>
-    </footer>
+    </footer>    
 </body>
 </html>
