@@ -251,15 +251,26 @@ footer {
 
 .red-transparent-background {
             background-color: rgba(255, 0, 0, 0.5); 
-            padding: 50px;
+            padding: 20px;
             
           }
 
 .login-container {
   display: flex;
   align-items: center;
+  justify-content: center;
 }     
 
 .log-column {
+  flex: 0 0 auto; /* Esto evita que la columna se expanda */
+}
+
+.registro-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}     
+
+.reg-column {
   flex: 0 0 auto; /* Esto evita que la columna se expanda */
 }
