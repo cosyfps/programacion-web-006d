@@ -249,3 +249,17 @@ footer {
   display: block; /* Elimina el espacio adicional debajo de las imágenes */
 }
 
+.red-transparent-background {
+            background-color: rgba(255, 0, 0, 0.5); 
+            padding: 50px;
+            
+          }
+
+.login-container {
+  display: flex;
+  align-items: center;
+}     
+
+.log-column {
+  flex: 0 0 auto; /* Esto evita que la columna se expanda */
+}
