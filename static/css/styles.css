@@ -253,7 +253,7 @@ footer {
 
 .red-transparent-background {
             background-color: rgba(255, 0, 0, 0.5); 
-            padding: 20px;
+            padding: 60px;
             
           }
 
@@ -261,18 +261,27 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: auto;
+
 }     
 
 .log-column {
   flex: 0 0 auto; /* Esto evita que la columna se expanda */
+  height: auto;
+ 
 }
 
 .registro-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: auto;
+  
 }     
 
 .reg-column {
   flex: 0 0 auto; /* Esto evita que la columna se expanda */
+  height: auto;
+
 }
+
