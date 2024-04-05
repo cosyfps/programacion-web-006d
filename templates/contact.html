@@ -35,7 +35,7 @@
 
         input[type="submit"] {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: #067020;
             color: #fff;
             border: none;
             cursor: pointer;
@@ -46,6 +46,8 @@
         }
     </style>
 </head>
+<body style="background-color: black;"></body>
+
 
 <body>
     
@@ -70,22 +72,31 @@
     </header>
     
     <!-- Content -->
-    <h1>Formulario de contacto</h1>
-    <form action="#" method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
-        
-        <label for="apellido">Apellido:</label>
-        <input type="text" id="apellido" name="apellido" required>
-        
-        <label for="telefono">Número telefónico:</label>
-        <input type="tel" id="telefono" name="telefono" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Formato: 123-456-7890" required>
-        
-        <label for="correo">Correo electrónico:</label>
-        <input type="email" id="correo" name="correo" required>
+    <div class="registro-container">
+        <div class="reg-column">
+            <img src="/static/assets/img/logo2.png" alt="">
+        </div>
+        <div class="reg-column">
+            <form class="red-transparent-background">
+                <h1>Formulario de contacto</h1>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" required>
+                
+                <label for="telefono">Número telefónico:</label>
+                <input type="tel" id="telefono" name="telefono"required>
+                
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+                
+                <input type="submit" value="Enviar">
+                <span><a href="homepage.html">Volver al inicio</a></span>
 
-        <input type="submit" value="Enviar">
-    </form>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
