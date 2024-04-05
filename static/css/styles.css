@@ -183,7 +183,7 @@ nav li a:hover::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0px;
+  margin-top: 70px;
   margin-bottom: 50px;
 }
 
@@ -203,8 +203,8 @@ nav li a:hover::after {
 }
 
 #search-form button {
-  padding: 10px 20px; /* Ajusta el padding del botón */
-  font-size: 15px; /* Tamaño de fuente */
+  padding: 10px 20px; 
+  font-size: 15px; 
   background-color: #23d45e;
   color: white;
   border: none;
@@ -229,26 +229,30 @@ footer {
 .catalog-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centra las columnas horizontalmente */
+  justify-content: center;
   align-items: flex-start;
   padding: 25px;
 }
 
-.column-cat {
-  flex: 0 1 calc(33.33% - 20px); /* 33.33% width for each column with a gap of 20px between them */
-  margin-left: 50px;
-  margin-bottom: 25px; /* Espacio entre las columnas */
+.row-cat {
+  flex: 0 1 calc(33.33% - 20px);
+  margin-left: 20px; 
+  margin-right: 20px; 
+  margin-bottom: 25px;
+  width: calc(33.33% - 40px); 
+  display: flex;
+  justify-content: space-between; 
 }
 
-.column-cat > div {
-  margin-bottom: 25px; /* Espacio entre las imágenes dentro de la columna */
+.row-cat > div {
+  width: 30%; 
 }
 
-.column-cat img {
-  width: 75%; /* Establece el ancho de las imágenes al 80% del contenedor */
+.row-cat img {
+  width: 100%;
   height: auto;
-  max-width: 100%; /* Asegura que las imágenes no excedan su contenedor */
-  display: block; /* Elimina el espacio adicional debajo de las imágenes */
+  max-width: 100%;
+  display: block;
 }
 
 .red-transparent-background {
@@ -267,8 +271,6 @@ footer {
 
 .log-column {
   flex: 0 0 auto; /* Esto evita que la columna se expanda */
-  height: auto;
- 
 }
 
 .registro-container {
@@ -281,7 +283,5 @@ footer {
 
 .reg-column {
   flex: 0 0 auto; /* Esto evita que la columna se expanda */
-  height: auto;
-
 }
 
