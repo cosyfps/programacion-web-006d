@@ -183,7 +183,7 @@ nav li a:hover::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0px;
+  margin-top: 70px;
   margin-bottom: 50px;
 }
 
