@@ -136,7 +136,9 @@ nav li a:hover::after {
 
 .column img {
   max-width: 100%;
+  width: 650px;
   height: auto; 
+  margin-top: 20px;
   margin-bottom: 20px; 
 }
 
@@ -151,7 +153,7 @@ nav li a:hover::after {
 .button-container button {
   font-size: 15px; 
   padding: 10px 25px;
-  background-color: red;
+  background-color: rgb(200, 0, 0);
   color: white;
   border: none;
   border-radius: 5px;
@@ -159,7 +161,7 @@ nav li a:hover::after {
 }
 
 .button-container button:hover {
-  background-color: rgb(180, 0, 0);
+  background-color: rgb(150, 0, 0);
 }
 
 @media (max-width: 768px) {
