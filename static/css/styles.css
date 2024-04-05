@@ -256,17 +256,17 @@ footer {
 }
 
 .red-transparent-background {
-            background-color: rgba(111, 25, 25, 0.72); 
-            padding: 45px;
-            padding-top: 70px;
-            border-radius: 41px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: white;
-            width: 623px;
+    background-color: rgba(111, 25, 25, 0.72); 
+    padding: 45px;
+    padding-top: 70px;
+    border-radius: 41px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    width: 623px;
 
-          }
+}
 
 .red-transparent-background h1{
   font-family: "Roboto", sans-serif;
@@ -298,3 +298,22 @@ footer {
   flex: 0 0 auto; /* Esto evita que la columna se expanda */
 }
 
+#loginbtn {
+  background-color: rgba(73, 113, 54, 1);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  box-shadow: rgba(0, 0, 0, 0.25);
+}
+
+#loginbox {
+  background-color: rgba(111, 25, 25, 0.72); 
+
+  padding-top: 70px;
+  border-radius: 41px;
+  color: white;
+}
