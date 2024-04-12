@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin | Biblioweb</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+</head>
+<style>
+    body{
+        background-color: black;
+    }
+</style>
+</head>
+<style>
+    .container {
+        display: flex;
+    }
+    .sidebar-item {
+        padding: 0.5rem 1rem;
+    }
+    .content {
+        flex-grow: 1;
+        padding: 20px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="sidebar">
+        <div class="logo"></div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link  sidebar-item" href="/templates/adminpanel/adminhome.html">Libros</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link  active sidebar-item " href="/templates/adminpanel/userlist.html">Usuarios</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidebar-item" href="/templates/home-page.html">Salir</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container" style="background-color: #efefef; border-radius: 5px;">
+        <h1>Usuarios registrados</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Correo Electrónico</th>
+                    <th>Contraseña</th>
+                    <th>ID Pregunta</th>
+                    <th>Respuesta</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>john@example.com</td>
+                    <td>********</td>
+                    <td>123</td>
+                    <td>Respuesta1</td>
+                    <td><button class="btn btn-primary">Editar</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane Smith</td>
+                    <td>jane@example.com</td>
+                    <td>********</td>
+                    <td>456</td>
+                    <td>Respuesta2</td>
+                    <td><button class="btn btn-primary">Editar</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Michael Johnson</td>
+                    <td>michael@example.com</td>
+                    <td>********</td>
+                    <td>789</td>
+                    <td>Respuesta3</td>
+                    <td><button class="btn btn-primary">Editar</button></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Maria García</td>
+                    <td>maria@example.com</td>
+                    <td>********</td>
+                    <td>101</td>
+                    <td>Respuesta4</td>
+                    <td><button class="btn btn-primary">Editar</button></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>David Lee</td>
+                    <td>david@example.com</td>
+                    <td>********</td>
+                    <td>112</td>
+                    <td>Respuesta5</td>
+                    <td><button class="btn btn-primary">Editar</button></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Sarah Brown</td>
+                    <td>sarah@example.com</td>
+                    <td>********</td>
+                    <td>131</td>
+                    <td>Respuesta6</td>
+                    <td><button class="btn btn-primary">Editar</button></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Paul Nguyen</td>
+                    <td>paul@example.com</td>
+                    <td>********</td>
+                    <td>141</td>
+                    <td>Respuesta7</td>
+                    <td><button class="btn btn-primary">Editar</button></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Anna Kovács</td>
+                    <td>anna@example.com</td>
+                    <td>********</td>
+                    <td>156</td>
+                    <td>Respuesta8</td>
+                    <td><button class="btn btn-primary">Editar</button></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Mohamed Ali</td>
+                    <td>mohamed@example.com</td>
+                    <td>********</td>
+                    <td>164</td>
+                    <td>Respuesta9</td>
+                    <td><button class="btn btn-primary">Editar</button></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Laura Müller</td>
+                    <td>laura@example.com</td>
+                    <td>********</td>
+                    <td>177</td>
+                    <td>Respuesta10</td>
+                    <td><button class="btn btn-primary">Editar</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/templates/adminpanel/adminhome.html" class="btn btn-primary">Volver</a>
+ 
+    </div>
+</div>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

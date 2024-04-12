@@ -413,10 +413,15 @@ max-width: 40vh;}
   background-color: #702222;
 }
 .sidebar-item.active {
-  background-color: #212529;
+  background-color: black;
 }
 
 .content {
+  background-color: var(--grey);
+  border-radius: 5px;
+}
+
+#usetlist {
   background-color: var(--grey);
   border-radius: 5px;
 }
