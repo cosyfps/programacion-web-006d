@@ -352,3 +352,8 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #0056b3;
 }
+
+#logo-fluid{
+  max-width: 100% !important;
+  height: auto;
+}
