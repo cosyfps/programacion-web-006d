@@ -1,8 +1,7 @@
-:root{
+:root {
   --primary: rgba(111, 25, 25, 0.72);
   --light: white;
   --grey: #efefef;
-
 }
 
 * {
@@ -138,33 +137,33 @@ nav li a:hover::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 100px; 
+  padding: 100px;
 }
 
 .column {
   flex: 1;
-  padding: 10px; 
-  text-align: center; 
+  padding: 10px;
+  text-align: center;
 }
 
 .column img {
   max-width: 100%;
   width: 650px;
-  height: auto; 
+  height: auto;
   margin-top: 20px;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
 .column span {
-  font-size: 40px; 
+  font-size: 40px;
 }
 
 .button-container {
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 .button-container button {
-  font-size: 15px; 
+  font-size: 15px;
   padding: 10px 25px;
   background-color: rgb(200, 0, 0);
   color: white;
@@ -179,16 +178,16 @@ nav li a:hover::after {
 
 @media (max-width: 768px) {
   .container {
-      flex-direction: column;
-      text-align: center;
+    flex-direction: column;
+    text-align: center;
   }
 
   .column {
-      padding: 10px; 
+    padding: 10px;
   }
 
   .column img {
-      margin-bottom: 10px; 
+    margin-bottom: 10px;
   }
 }
 
@@ -207,17 +206,17 @@ nav li a:hover::after {
 }
 
 #barra-busqueda {
-  width: 100%; 
-  max-width: 500px; 
-  padding: 10px; 
-  font-size: 15px; 
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  font-size: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
 #search-form button {
-  padding: 10px 20px; 
-  font-size: 15px; 
+  padding: 10px 20px;
+  font-size: 15px;
   background-color: #23d45e;
   color: white;
   border: none;
@@ -249,16 +248,16 @@ footer {
 
 .row-cat {
   flex: 0 1 calc(33.33% - 20px);
-  margin-left: 20px; 
-  margin-right: 20px; 
+  margin-left: 20px;
+  margin-right: 20px;
   margin-bottom: 25px;
-  width: calc(33.33% - 40px); 
+  width: calc(33.33% - 40px);
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 .row-cat > div {
-  width: 30%; 
+  width: 30%;
 }
 
 .row-cat img {
@@ -269,22 +268,21 @@ footer {
 }
 
 .red-transparent-background {
-    background-color: rgba(111, 25, 25, 0.72); 
-    padding: 45px;
-    padding-top: 70px;
-    border-radius: 41px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    width: 623px;
-
+  background-color: rgba(111, 25, 25, 0.72);
+  padding: 45px;
+  padding-top: 70px;
+  border-radius: 41px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  width: 623px;
 }
 
-.red-transparent-background h1{
+.red-transparent-background h1 {
   font-family: "Roboto", sans-serif;
   font-weight: 900;
-  font-style: normal;;
+  font-style: normal;
 }
 
 .login-container {
@@ -292,8 +290,7 @@ footer {
   align-items: center;
   justify-content: center;
   height: auto;
-
-}     
+}
 
 .log-column {
   flex: 0 0 auto; /* Esto evita que la columna se expanda */
@@ -304,8 +301,7 @@ footer {
   align-items: center;
   justify-content: center;
   height: auto;
-  
-}     
+}
 
 .reg-column {
   flex: 0 0 auto; /* Esto evita que la columna se expanda */
@@ -324,14 +320,14 @@ footer {
 }
 
 #loginbox {
-  background-color: rgba(111, 25, 25, 0.72); 
+  background-color: rgba(111, 25, 25, 0.72);
 
   padding-top: 70px;
   border-radius: 41px;
   color: white;
 }
 
-form{
+form {
   max-width: 400px;
   margin: 0 auto;
 }
@@ -361,7 +357,7 @@ input[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-#logo-fluid{
+#logo-fluid {
   max-width: 100% !important;
   height: auto;
 }
@@ -378,22 +374,24 @@ input[type="submit"]:hover {
   margin-bottom: 20px; /* Espacio entre imágenes */
 }
 
-@media screen and (max-width: 992px){
-    .image-container{
-  column-count: 3;
-}
-}
-
-@media screen and (max-width: 768px){
-.image-container{
-column-count: 2;
-max-width: 60vh;}
+@media screen and (max-width: 992px) {
+  .image-container {
+    column-count: 3;
+  }
 }
 
-@media screen and (max-width: 576px){
-.image-container{
-column-count: 1;
-max-width: 40vh;}
+@media screen and (max-width: 768px) {
+  .image-container {
+    column-count: 2;
+    max-width: 60vh;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .image-container {
+    column-count: 1;
+    max-width: 40vh;
+  }
 }
 
 .sidebar {
