@@ -423,3 +423,9 @@ input[type="submit"]:hover {
   background-color: var(--grey);
   border-radius: 5px;
 }
+
+@media screen and (max-width: 992px) {
+  .sidebar {
+    display: none;
+  }
+}
