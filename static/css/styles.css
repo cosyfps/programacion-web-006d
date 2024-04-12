@@ -357,3 +357,33 @@ input[type="submit"]:hover {
   max-width: 100% !important;
   height: auto;
 }
+
+.image-container {
+  column-count: 4; /* Número de columnas */
+  column-gap: 20px; /* Espacio entre columnas */
+  margin: 0 auto; /* Centrar horizontalmente */
+  max-width: 800px; /* Ancho máximo del contenedor */
+}
+
+.image-container img {
+  width: 100%; /* Asegura que las imágenes se ajusten al ancho de las columnas */
+  margin-bottom: 20px; /* Espacio entre imágenes */
+}
+
+@media screen and (max-width: 992px){
+    .image-container{
+  column-count: 3;
+}
+}
+
+@media screen and (max-width: 768px){
+.image-container{
+column-count: 2;
+max-width: 60vh;}
+}
+
+@media screen and (max-width: 576px){
+.image-container{
+column-count: 1;
+max-width: 40vh;}
+}
