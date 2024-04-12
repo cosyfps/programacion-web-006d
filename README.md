@@ -8,4 +8,4 @@ Este repositorio se ha creado con el propósito de proporcionar un espacio centr
 
 ## Contacto
 - Email: kelvin.morenog28@gmail.com
-- LinkedIn: [Kelvin A. Moreno](#)
+- LinkedIn: [Kelvin A. Moreno](https://www.linkedin.com/in/kelvin-a-moreno/)
