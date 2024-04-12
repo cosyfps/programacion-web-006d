@@ -1,3 +1,10 @@
+:root{
+  --primary: rgba(111, 25, 25, 0.72);
+  --light: white;
+  --grey: #efefef;
+
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +13,7 @@
 }
 
 body {
+  background-color: black;
   font-family: "Roboto", sans-serif;
   color: white;
   background: url(/static/assets/img/bg3.png) no-repeat;
@@ -386,4 +394,29 @@ max-width: 60vh;}
 .image-container{
 column-count: 1;
 max-width: 40vh;}
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  padding-top: 3rem;
+  background-color: var(--primary);
+  color: #fff;
+}
+.sidebar-item {
+  padding: 0.5rem 1rem;
+}
+.sidebar-item:hover {
+  background-color: #702222;
+}
+.sidebar-item.active {
+  background-color: #212529;
+}
+
+.content {
+  background-color: var(--grey);
+  border-radius: 5px;
 }
