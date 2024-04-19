@@ -105,7 +105,18 @@ nav li a:hover::after {
   #loginbox {
     background-color: transparent !important;
   }
+
 }
+
+@media screen and (max-width: 1200px) {
+  #loginbox {
+    margin-left: 0vh;
+    margin-right: 0h;
+  }
+
+}
+
+
 
 #tittlebk {
   font-family: "Inter", sans-serif;

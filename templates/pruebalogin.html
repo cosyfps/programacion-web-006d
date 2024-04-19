@@ -9,116 +9,220 @@
 </head>
 <body>
     <div class="container">
-        <h1>Bienvenido</h1>
+        <div class="row justify-content-center">
+            <!-- Formulario de Login -->
+            <div class="col-md-6" id="loginForm">
+                <h2>Login</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="loginEmail" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="loginEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="loginPassword" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                </form>
+                <p><a href="#" id="showRegisterForm">¿No tienes cuenta? Regístrate aquí</a></p>
+                <p><a href="#" id="showForgotPasswordForm">¿Olvidaste tu contraseña?</a></p>
+            </div>
 
-        <!-- Formulario de Login -->
-        <form id="loginForm">
-            <h2>Login</h2>
-            <div class="mb-3">
-                <label for="loginEmail" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="loginEmail">
+            <!-- Formulario de Registro (oculto inicialmente) -->
+            <div class="col-md-6" id="registerForm" style="display: none;">
+                <h2>Registro</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="registerName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="registerName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerEmail" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="registerEmail" required>
+                        <div id="emailFeedback" class="invalid-feedback">Ingrese un correo electrónico válido</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registerPassword" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="registerPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+                        <input type="password" class="form-control" id="confirmPassword" required>
+                        <div id="passwordFeedback" class="invalid-feedback">La contraseña debe contener al menos una mayúscula y un número, y coincidir con la confirmación</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                </form>
+                <p><a href="#" id="showLoginForm">¿Ya tienes cuenta? Inicia sesión aquí</a></p>
+                <p><a href="#" id="showForgotPasswordForm">¿Olvidaste tu contraseña?</a></p>
             </div>
-            <div class="mb-3">
-                <label for="loginPassword" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="loginPassword">
-            </div>
-            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-            <p><a href="#" id="toggleRegister">¿No tienes cuenta? Regístrate aquí</a></p>
-            <p><a href="#" id="toggleForgotPassword">¿Olvidaste tu contraseña?</a></p>
-        </form>
 
-        <!-- Formulario de Registro (oculto inicialmente) -->
-        <form id="registerForm" style="display: none;">
-            <h2>Registro</h2>
-            <div class="mb-3">
-                <label for="registerName" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="registerName">
+            <!-- Formulario de Recuperación de Contraseña (oculto inicialmente) -->
+            <div class="col-md-6" id="forgotPasswordForm" style="display: none;">
+                <h2>Recuperación de Contraseña</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="forgotPasswordEmail" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="forgotPasswordEmail" required>
+                        <div id="emailFeedback" class="invalid-feedback">Ingrese un correo electrónico válido</div>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="sendCodeButton">Enviar Código</button>
+                </form>
+                <p><a href="#" id="showLoginForm">¿Recuerdas tu contraseña? Inicia sesión aquí</a></p>
             </div>
-            <div class="mb-3">
-                <label for="registerEmail" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="registerEmail">
-            </div>
-            <div class="mb-3">
-                <label for="registerPassword" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="registerPassword">
-            </div>
-            <button type="submit" class="btn btn-primary">Registrarse</button>
-            <p><a href="#" id="toggleLogin">¿Ya tienes cuenta? Inicia sesión aquí</a></p>
-        </form>
 
-        <!-- Formulario de Recuperación de Contraseña (oculto inicialmente) -->
-        <form id="forgotPasswordForm" style="display: none;">
-            <h2>Recuperación de Contraseña</h2>
-            <div class="mb-3">
-                <label for="forgotPasswordEmail" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="forgotPasswordEmail">
+            <!-- Segunda Etapa de Recuperación de Contraseña (oculto inicialmente) -->
+            <div class="col-md-6" id="verifyCodeForm" style="display: none;">
+                <h2>Verificar Código</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="verificationCode" class="form-label">Código de Verificación</label>
+                        <input type="text" class="form-control" id="verificationCode" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="verifyCodeButton">Verificar</button>
+                </form>
+                <p><a href="#" id="showForgotPasswordForm">¿Olvidaste tu contraseña?</a></p>
             </div>
-            <button type="button" class="btn btn-primary" id="sendCodeButton">Enviar Código</button>
-            <p><a href="#" id="toggleLogin">¿Recuerdas tu contraseña? Inicia sesión aquí</a></p>
-        </form>
 
-        <!-- Segunda Etapa de Recuperación de Contraseña (oculto inicialmente) -->
-        <form id="verifyCodeForm" style="display: none;">
-            <h2>Verificar Código</h2>
-            <div class="mb-3">
-                <label for="verificationCode" class="form-label">Código de Verificación</label>
-                <input type="text" class="form-control" id="verificationCode">
+            <!-- Tercera Etapa de Recuperación de Contraseña (oculto inicialmente) -->
+            <div class="col-md-6" id="resetPasswordForm" style="display: none;">
+                <h2>Restablecer Contraseña</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">Nueva Contraseña</label>
+                        <input type="password" class="form-control" id="newPassword" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmNewPassword" class="form-label">Confirmar Nueva Contraseña</label>
+                        <input type="password" class="form-control" id="confirmNewPassword" required>
+                        <div id="passwordFeedback" class="invalid-feedback">La contraseña debe contener al menos una mayúscula y un número, y coincidir con la confirmación</div>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="resetPasswordButton">Restablecer Contraseña</button>
+                </form>
+                <p><a href="#" id="showForgotPasswordForm">¿Olvidaste tu contraseña?</a></p>
             </div>
-            <button type="button" class="btn btn-primary" id="verifyCodeButton">Verificar</button>
-        </form>
-
-        <!-- Tercera Etapa de Recuperación de Contraseña (oculto inicialmente) -->
-        <form id="resetPasswordForm" style="display: none;">
-            <h2>Restablecer Contraseña</h2>
-            <div class="mb-3">
-                <label for="newPassword" class="form-label">Nueva Contraseña</label>
-                <input type="password" class="form-control" id="newPassword">
-            </div>
-            <div class="mb-3">
-                <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-                <input type="password" class="form-control" id="confirmPassword">
-            </div>
-            <button type="button" class="btn btn-primary" id="resetPasswordButton">Restablecer Contraseña</button>
-        </form>
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Función para mostrar el formulario de registro y ocultar el de login
-        document.getElementById("toggleRegister").addEventListener("click", function(event) {
+        // Mostrar formulario de registro y ocultar el de login
+        document.getElementById("showRegisterForm").addEventListener("click", function(event) {
             event.preventDefault();
             document.getElementById("loginForm").style.display = "none";
+            document.getElementById("forgotPasswordForm").style.display = "none";
             document.getElementById("registerForm").style.display = "block";
         });
 
-        // Función para mostrar el formulario de login y ocultar el de registro
-        document.getElementById("toggleLogin").addEventListener("click", function(event) {
+        // Mostrar formulario de login y ocultar el de registro
+        document.getElementById("showLoginForm").addEventListener("click", function(event) {
             event.preventDefault();
             document.getElementById("registerForm").style.display = "none";
+            document.getElementById("forgotPasswordForm").style.display = "none";
             document.getElementById("loginForm").style.display = "block";
         });
 
-        // Función para mostrar el formulario de recuperación de contraseña y ocultar el de login
-        document.getElementById("toggleForgotPassword").addEventListener("click", function(event) {
+        // Mostrar formulario de recuperación de contraseña y ocultar el de login y registro
+        document.getElementById("showForgotPasswordForm").addEventListener("click", function(event) {
             event.preventDefault();
             document.getElementById("loginForm").style.display = "none";
+            document.getElementById("registerForm").style.display = "none";
             document.getElementById("forgotPasswordForm").style.display = "block";
         });
 
-        // Función para mostrar la segunda etapa del formulario de recuperación de contraseña y ocultar el de la primera etapa
-        document.getElementById("sendCodeButton").addEventListener("click", function(event) {
-            event.preventDefault();
-            document.getElementById("forgotPasswordForm").style.display = "none";
-            document.getElementById("verifyCodeForm").style.display = "block";
+        // Función para validar el formato del correo electrónico en tiempo real
+        document.getElementById("registerEmail").addEventListener("input", function() {
+            var emailInput = document.getElementById("registerEmail");
+            var emailFeedback = document.getElementById("emailFeedback");
+            if (!emailInput.validity.valid) {
+                emailFeedback.style.display = "block";
+                emailInput.classList.add("is-invalid");
+                emailInput.classList.remove("is-valid");
+            } else {
+                emailFeedback.style.display = "none";
+                emailInput.classList.remove("is-invalid");
+                emailInput.classList.add("is-valid");
+            }
         });
 
-        // Función para mostrar la tercera etapa del formulario de recuperación de contraseña y ocultar el de la segunda etapa
-        document.getElementById("verifyCodeButton").addEventListener("click", function(event) {
-            event.preventDefault();
-            document.getElementById("verifyCodeForm").style.display = "none";
-            document.getElementById("resetPasswordForm").style.display = "block";
+        // Función para validar la contraseña en tiempo real
+        document.getElementById("registerPassword").addEventListener("input", function() {
+            var passwordInput = document.getElementById("registerPassword");
+            var confirmPasswordInput = document.getElementById("confirmPassword");
+            var passwordFeedback = document.getElementById("passwordFeedback");
+            var passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/; // Al menos una mayúscula y un número, 8 caracteres mínimo
+            if (!passwordRegex.test(passwordInput.value)) {
+                passwordFeedback.style.display = "block";
+                passwordInput.classList.add("is-invalid");
+                passwordInput.classList.remove("is-valid");
+                confirmPasswordInput.classList.add("is-invalid");
+                confirmPasswordInput.classList.remove("is-valid");
+            } else {
+                passwordFeedback.style.display = "none";
+                passwordInput.classList.remove("is-invalid");
+                passwordInput.classList.add("is-valid");
+                confirmPasswordInput.classList.remove("is-invalid");
+                confirmPasswordInput.classList.add("is-valid");
+            }
         });
+
+        // Función para validar que las contraseñas coincidan en tiempo real
+        document.getElementById("confirmPassword").addEventListener("input", function() {
+            var passwordInput = document.getElementById("registerPassword");
+            var confirmPasswordInput = document.getElementById("confirmPassword");
+            var passwordFeedback = document.getElementById("passwordFeedback");
+            if (passwordInput.value !== confirmPasswordInput.value) {
+                passwordFeedback.style.display = "block";
+                passwordInput.classList.add("is-invalid");
+                confirmPasswordInput.classList.add("is-invalid");
+            } else {
+                passwordFeedback.style.display = "none";
+                passwordInput.classList.remove("is-invalid");
+                confirmPasswordInput.classList.remove("is-invalid");
+            }
+        });
+
+        // Enviar código y mostrar formulario de verificación
+        document.getElementById("sendCodeButton").addEventListener("click", function(event) {
+        event.preventDefault();
+        document.getElementById("forgotPasswordForm").style.display = "none";
+        document.getElementById("verifyCodeForm").style.display = "block";
+        });
+        // Verificar código y mostrar formulario de restablecimiento de contraseña
+        document.getElementById("verifyCodeButton").addEventListener("click", function(event) {
+        event.preventDefault();
+        // Aquí puedes agregar la lógica de verificación del código, por ejemplo:
+        var verificationCode = document.getElementById("verificationCode").value;
+        if (verificationCode === "123456") { // Código de ejemplo
+            // Ocultar formulario de verificación de código
+            document.getElementById("verifyCodeForm").style.display = "none";
+            // Mostrar formulario de restablecimiento de contraseña
+            document.getElementById("resetPasswordForm").style.display = "block";
+        } else {
+            // Mostrar un mensaje de error o realizar otra acción según corresponda
+            alert("Código incorrecto. Por favor, inténtalo de nuevo.");
+        }
+    });
+
+        // Función para validar la nueva contraseña  en tiempo real
+        document.getElementById("resetPasswordForm").addEventListener("input", function() {
+        var passwordInput = document.getElementById("resetPasswordForm");
+        var confirmPasswordInput = document.getElementById("confirmPassword");
+        var passwordFeedback = document.getElementById("passwordFeedback");
+        var passwordRegex = /^(?=.*[A-Z])(?=.*\d).{8,}$/; // Al menos una mayúscula y un número, 8 caracteres mínimo
+        if (!passwordRegex.test(passwordInput.value)) {
+            passwordFeedback.style.display = "block";
+            passwordInput.classList.add("is-invalid");
+            passwordInput.classList.remove("is-valid");
+            confirmPasswordInput.classList.add("is-invalid");
+            confirmPasswordInput.classList.remove("is-valid");
+        } else {
+            passwordFeedback.style.display = "none";
+            passwordInput.classList.remove("is-invalid");
+            passwordInput.classList.add("is-valid");
+            confirmPasswordInput.classList.remove("is-invalid");
+            confirmPasswordInput.classList.add("is-valid");
+        }
+    });
     </script>
 </body>
 </html>
