@@ -90,7 +90,7 @@ nav li a:hover::after {
 }
 
 #infotxt {
-  background-color: rgba(111, 25, 25, 0.72);
+  background-color: var(--primary);
   color: aliceblue;
 }
 
@@ -101,6 +101,9 @@ nav li a:hover::after {
 
   #reviewbk {
     font-size: 1.5rem;
+  }
+  #loginbox {
+    background-color: transparent !important;
   }
 }
 
@@ -268,7 +271,7 @@ footer {
 }
 
 .red-transparent-background {
-  background-color: rgba(111, 25, 25, 0.72);
+  background-color: var(--primary);
   padding: 45px;
   padding-top: 70px;
   border-radius: 41px;
@@ -320,11 +323,17 @@ footer {
 }
 
 #loginbox {
-  background-color: rgba(111, 25, 25, 0.72);
-
+  background-color: var(--primary);
   padding-top: 70px;
   border-radius: 41px;
   color: white;
+  text-align: center;
+}
+
+#loginbox h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
 
 form {
