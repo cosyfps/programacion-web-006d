@@ -450,3 +450,7 @@ input[type="submit"]:hover {
     display: none;
   }
 }
+
+.edit-mode {
+  color: rgb(40, 12, 199); /* Cambiar el fondo del cuadro de texto a blanco */
+}
