@@ -114,23 +114,41 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function validateForm() {
-            var telefonoRegex = /^[9]{1}[0-9]{8}$/;
-            var telefonoInput = document.getElementById("telefono").value;
-            if (!telefonoRegex.test(telefonoInput)) {
-                alert("Por favor, introduce un número de teléfono válido en el formato 9XXXXXXXX.");
-                return false;
-            }
-            
-            var correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            var correoInput = document.getElementById("correo").value;
-            if (!correoRegex.test(correoInput)) {
-                alert("Por favor, introduce un correo electrónico válido.");
-                return false;
-            }
-            
-            return true;
-        }
+function validateForm() {
+    var nombreRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]+$/;
+    var nombreInput = document.getElementById("nombre").value;
+    if (!nombreRegex.test(nombreInput)) {
+        alert("Por favor, introduce un nombre válido.");
+        return false;
+    }
+    
+    var apellidoRegex = /^[A-Za-záéíóúÁÉÍÓÚ\s]+$/;
+    var apellidoInput = document.getElementById("apellido").value;
+    if (!apellidoRegex.test(apellidoInput)) {
+        alert("Por favor, introduce un apellido válido.");
+        return false;
+    }
+    
+    var telefonoRegex = /^[9]{1}[0-9]{8}$/;
+    var telefonoInput = document.getElementById("telefono").value;
+    if (!telefonoRegex.test(telefonoInput)) {
+        alert("Por favor, introduce un número de teléfono válido en el formato 9XXXXXXXX.");
+        return false;
+    }
+    
+    var correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var correoInput = document.getElementById("correo").value;
+    if (!correoRegex.test(correoInput)) {
+        alert("Por favor, introduce un correo electrónico válido.");
+        return false;
+    }
+    
+    return true;
+}
+
+
     </script>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="/static/javascript/contacto.js"></script>
 </html>
