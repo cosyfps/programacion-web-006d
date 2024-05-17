@@ -9,3 +9,5 @@ function iniciarMap(){
       map: map
     });
 }
+
+// falra verificar con la credencial que solicita google maps para usarla sin problemas 
