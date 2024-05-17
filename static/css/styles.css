@@ -1,5 +1,5 @@
 :root {
-  --primary: rgba(111, 25, 25, 0.72);
+  --primary: white;
   --light: white;
   --grey: #efefef;
 }
@@ -338,7 +338,6 @@ footer {
   background-color: var(--primary);
   padding-top: 70px;
   border-radius: 41px;
-  color: white;
   text-align: center;
 }
 
