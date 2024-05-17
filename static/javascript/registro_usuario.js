@@ -49,8 +49,8 @@ $(document).ready(function(){
                 <td>${email}</td>
                 <td>${role}</td>
                 <td>
-                    <button class="btn btn-primary edit-user">Editar</button>
-                    <button class="btn btn-danger delete-user">Eliminar</button>
+                    <button class="btn btn-primary edit-user"><i class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-danger delete-user"><i class="bi bi-trash3-fill"></i></button>
                 </td>
             </tr>
         `;

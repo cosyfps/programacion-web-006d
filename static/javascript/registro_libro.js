@@ -57,8 +57,8 @@ $(document).ready(function(){
                     <img id="image-${id}" src="${imageUrl}" alt="Portada" style="max-width: 5vh; display: ${imageUrl ? 'block' : 'none'};">
                 </td>
                 <td>
-                    <button class="btn btn-primary edit-product">Editar</button>
-                    <button class="btn btn-danger delete-product">Eliminar</button>
+                    <button class="btn btn-primary edit-product"><i class="bi bi-pencil-square"></i></button>
+                    <button class="btn btn-danger delete-product"><i class="bi bi-trash3-fill"></i></button>
                 </td>
             </tr>
         `;
