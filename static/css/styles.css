@@ -429,7 +429,7 @@ input[type="submit"]:hover {
   padding: 0.5rem 1rem;
 }
 .sidebar-item:hover {
-  background-color: #702222;
+  background-color: #524e4e;
 }
 .sidebar-item.active {
   background-color: black;
