@@ -17,6 +17,7 @@ eggs/
 lib/
 lib64/
 parts/
+
 sdist/
 var/
 wheels/
@@ -69,13 +70,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
-
-# PyBuilder
-.pybuilder/
-target/
-
-# Jupyter Notebook
+docsJupyter Notebook
 .ipynb_checkpoints
 
 # IPython
@@ -120,13 +115,6 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
 
 # Spyder project settings
 .spyderproject
