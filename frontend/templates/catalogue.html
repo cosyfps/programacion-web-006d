@@ -102,6 +102,7 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/frontend/static/javascript/api.js"></script>
     <script>
         document.getElementById("search-form").addEventListener("submit", function(event) {
             event.preventDefault(); // Evita que el formulario se envíe
@@ -121,13 +122,16 @@
                         var title = item.volumeInfo.title;
                         var authors = item.volumeInfo.authors ? item.volumeInfo.authors.join(", ") : "Autor desconocido";
                         var thumbnail = item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.thumbnail : "https://via.placeholder.com/150";
+                        var downloadLink = item.accessInfo.pdf ? item.accessInfo.pdf.downloadLink : "#";
 
                         // Crea un elemento para mostrar el resultado
                         var resultItem = document.createElement("div");
                         resultItem.innerHTML = `
                             <h3>${title}</h3>
                             <p>Author(s): ${authors}</p>
-                            <img src="${thumbnail}" alt="Thumbnail">
+                            <a href="${downloadLink}" target="_blank">
+                                <img src="${thumbnail}" alt="Thumbnail">
+                            </a>
                         `;
 
                         // Agrega el resultado al contenedor

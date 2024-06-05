@@ -1,5 +1,5 @@
 async function getBookCover(query) {
-    const apiKey = AIzaSyBjOB_q4G9z4nsaQyjKOGX0vjGPtNt188s; 
+    const apiKey = "AIzaSyBjOB_q4G9z4nsaQyjKOGX0vjGPtNt188s"; 
     const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&key=${apiKey}`;
     try {
         const response = await fetch(url);
@@ -21,7 +21,8 @@ document.getElementById('search-form').addEventListener('submit', async function
     event.preventDefault();
     const query = document.getElementById('barra-busqueda').value;
     const resultDiv = document.getElementById('result');
-    resultDiv.innerHTML = 'Searching...';
+    resultDiv.innerHTML = 'Buscando...';
     const coverUrl = await getBookCover(query);
     resultDiv.innerHTML = `<img src="${coverUrl}" alt="Book Cover">`;
 });
+
