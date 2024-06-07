@@ -1,5 +1,3 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -51,10 +49,10 @@
                 </div>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active sidebar-item" href="{% url 'libros_list' %}">Libros</a>
+                        <a class="nav-link active sidebar-item" href="/backend/apps/core/templates/core/admin/adminhome.html">Libros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link sidebar-item" href="{% url 'usuarios_list' %}">Usuarios</a>
+                        <a class="nav-link sidebar-item" href="/backend/apps/core/templates/core/admin/userlist.html">Usuarios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link sidebar-item" href="/frontend/templates/home-page.html">Salir</a>
@@ -63,42 +61,35 @@
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div style="margin-top: 100px;" class="content">
-                    <h1>Lista de Libros</h1>
-                    <button style="margin-top: 4rem;" class="btn btn-primary">
-                        <a href="{% url 'libros_form' %}" style="color: white;">Agregar Libro</a>
-                    </button>
-                    <div class="table-responsive" style="margin-top: 2rem;">
-                        <table class="table table-dark table-striped table-sm">
+                    <h1>Eliminar Libro</h1>
+                    <form method="post">
+                        {% csrf_token %}
+                        <p>¿Quiere eliminar este Libro?</p>
+                        
+                        <table>
                             <thead>
-                                <tr>
-                                    <th>Título</th>
-                                    <th>Género</th>
-                                    <th>Autor</th>
-                                    <th>Año</th>
-                                    <th>Descripción</th>
-                                    <th>Editar</th>
-                                    <th>Eliminar</th>
+                                <tr style="border: 1px solid black; background-color: #15725b;">
+                                    <th style="border: 1px solid black; padding: 8px;">Título</th>
+                                    <th style="border: 1px solid black; padding: 8px;">Autor</th>
+                                    <th style="border: 1px solid black; padding: 8px;">Género</th>
+                                    <th style="border: 1px solid black; padding: 8px;">Año de Publicación</th>
+                                    <th style="border: 1px solid black; padding: 8px;">Descripción</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for libro in object_list %}
-                                <tr>
-                                    <td>{{ libro.tituloLibro }}</td>
-                                    <td>{{ libro.generoLibro.nombreGenero }}</td>
-                                    <td>{{ libro.autorLibro.nombreAutor }}</td>
-                                    <td>{{ libro.anioLibro.anio }}</td>
-                                    <td>{{ libro.descripcionLibro }}</td>
-                                    <td>
-                                        <a href="{% url 'libros_update' libro.id %}" class="btn btn-warning">Editar</a>
-                                    </td>
-                                    <td>
-                                        <a href="{% url 'libros_delete' libro.id %}" class="btn btn-danger">Eliminar</a>
-                                    </td>
+                                <tr style="border: 1px solid black;">
+                                    <td style="border: 1px solid black; padding: 8px;">{{ object.titulo }}</td>
+                                    <td style="border: 1px solid black; padding: 8px;">{{ object.autor }}</td>
+                                    <td style="border: 1px solid black; padding: 8px;">{{ object.genero }}</td>
+                                    <td style="border: 1px solid black; padding: 8px;">{{ object.anio_publicacion }}</td>
+                                    <td style="border: 1px solid black; padding: 8px;">{{ object.descripcion }}</td>
                                 </tr>
-                                {% endfor %}
                             </tbody>
                         </table>
-                    </div>
+                    
+                        <button type="submit">Eliminar Libro</button>
+                    </form>
+                    
                 </div>
             </main>
         </div>
