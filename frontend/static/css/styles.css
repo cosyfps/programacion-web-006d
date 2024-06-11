@@ -1,5 +1,6 @@
 :root {
-  --primary: rgba(255, 255, 255, 0.856);
+  --primary: rgba(111, 25, 25, 0.72);
+  --secondary: rgba(255, 255, 255, 0.856);
   --light: white;
   --grey: #efefef;
 }
@@ -104,9 +105,21 @@ nav li a:hover::after {
   color: aliceblue;
 }
 
+#loginbox {
+  background-color: var(--secondary) !important;
+}
+
 @media screen and (max-width: 992px) {
   #infotxt {
     background-color: transparent;
+  }
+
+  #loginbox h2 {
+    color: white;
+  }
+
+  #loginbox {
+    color: white;
   }
 
   #reviewbk {
@@ -114,8 +127,10 @@ nav li a:hover::after {
   }
   #loginbox {
     background-color: transparent !important;
+    
   }
 
+  
 }
 
 @media screen and (max-width: 1200px) {
