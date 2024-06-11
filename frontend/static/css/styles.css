@@ -109,6 +109,10 @@ nav li a:hover::after {
   background-color: var(--secondary) !important;
 }
 
+#logincontent {
+  max-width: 450px !important;
+}
+
 @media screen and (max-width: 992px) {
   #infotxt {
     background-color: transparent;
@@ -130,7 +134,10 @@ nav li a:hover::after {
     
   }
 
-  
+  #logo-fluid {
+    content: url(/frontend/static/assets/img/logo2.png);
+  }
+
 }
 
 @media screen and (max-width: 1200px) {
@@ -361,7 +368,8 @@ footer {
 #loginbox {
   background-color: var(--primary);
   padding-top: 70px;
-  border-radius: 41px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
   text-align: center;
 }
 
