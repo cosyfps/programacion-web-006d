@@ -65,4 +65,6 @@ class ItemCarrito(models.Model):
         return f"{self.cantidad} x {self.libro.tituloLibro}"
 
     def total_precio(self):
-        return self.libro.precioLibro * self.cantidad
+        if self.libro.precioLibro is not None:
+            return self.libro.precioLibro * self.cantidad
+        return 0
