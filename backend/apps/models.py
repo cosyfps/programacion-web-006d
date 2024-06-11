@@ -1,7 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
-# Create your models here.
 class GeneroLibro(models.Model):
     generoLibro = models.CharField(max_length=100, null=False, blank=False, default="")
 
@@ -36,6 +36,8 @@ class Libro(models.Model):
         AnioLibro, null=True, blank=True, on_delete=models.SET_NULL
     )
     descripcionLibro = models.TextField(null=True, blank=True)
+    portadaLibro = models.ImageField(null=True, blank=True)
+    precioLibro = models.FloatField(null=True, blank=True)
 
     def __str__(self):
         return self.tituloLibro
@@ -45,25 +47,22 @@ class Libro(models.Model):
         verbose_name_plural = "libros"
 
 
-class TipoUsuario(models.Model):
-    tipoUsuario = models.CharField(max_length=100, null=False, blank=False, default="")
+class CarritoCompra(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.tipoUsuario
+        return f"Carrito de {self.user.username}"
 
 
-class Usuario(models.Model):
-    nombreUsuario = models.CharField(max_length=100, null=False, blank=False)
-    apellidoUsuario = models.CharField(max_length=100, null=False, blank=False)
-    emailUsuario = models.EmailField(max_length=100, null=True, blank=True)
-    tipoUsuario = models.ForeignKey(
-        TipoUsuario, null=True, blank=True, on_delete=models.SET_NULL
+class ItemCarrito(models.Model):
+    carrito = models.ForeignKey(
+        CarritoCompra, on_delete=models.CASCADE, related_name="items"
     )
-    edadUsuario = models.IntegerField(null=True, blank=True)
+    libro = models.ForeignKey(Libro, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)
 
     def __str__(self):
-        return f"{self.nombreUsuario} {self.apellidoUsuario}"
+        return f"{self.cantidad} x {self.libro.tituloLibro}"
 
-    class Meta:
-        verbose_name = "usuario"
-        verbose_name_plural = "usuarios"
+    def total_precio(self):
+        return self.libro.precioLibro * self.cantidad

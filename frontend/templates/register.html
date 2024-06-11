@@ -41,7 +41,7 @@
                         <a class="nav-link fw-bold fs-4" href="/frontend/templates/contact.html">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold fs-4" href="/frontend/templates/signin2.html">Iniciar Sesión</a>
+                        <a class="nav-link active fw-bold fs-4" href="/frontend/templates/signin.html">Iniciar Sesión</a>
                     </li>
                 </ul>
             </div>
@@ -53,24 +53,8 @@
         <div class="row">
             <div class="col" id="loginbox">
                 <img src="/frontend/static/assets/img/blacklogo.svg" id="logo-fluid" alt="" style="max-width: 70vh;">
-                 <!-- Formulario de Login -->
-                <form id="loginForm">
-                    <h2>Iniciar Sesión</h2>
-                    <div class="mb-3">
-                        <label for="loginEmail" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="loginEmail" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="loginPassword" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="loginPassword" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-                    <p><a href="#" id="toggleRegister">¿No tienes cuenta? Regístrate aquí</a></p>
-                    <p><a href="#" id="toggleForgotPassword">¿Olvidaste tu contraseña?</a></p>
-                </form>
-
-                <!-- Formulario de Registro (oculto inicialmente) -->
-                <form id="registerForm" style="display: none;">
+                <!-- Formulario de Registro-->
+                <form id="registerForm">
                     <h2>Registro</h2>
                     <div class="mb-3">
                         <label for="registerName" class="form-label">Nombre</label>
@@ -91,44 +75,7 @@
                         <div id="passwordFeedback" class="invalid-feedback">La contraseña debe contener al menos una mayúscula y un número, y coincidir con la confirmación</div>
                     </div>
                     <button type="submit" class="btn btn-primary">Registrarse</button>
-                    <p><a href="#" id="toggleLogin">¿Ya tienes cuenta? Inicia sesión aquí</a></p>
-                </form>
-
-                <!-- Formulario de Recuperación de Contraseña (oculto inicialmente) -->
-                <form id="forgotPasswordForm" style="display: none;">
-                    <h2>Recuperación de Contraseña</h2>
-                    <div class="mb-3">
-                        <label for="forgotPasswordEmail" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="forgotPasswordEmail" required>
-                        <div id="forgotPasswordEmailFeedback" class="invalid-feedback">Ingrese un correo electrónico válido</div>
-                    </div>
-                    <button type="button" class="btn btn-primary" id="sendCodeButton">Enviar Código</button>
-                    <p><a href="/templates/signin2.html" id="toggleLogin">¿Recuerdas tu contraseña? Inicia sesión aquí</a></p>
-                </form>
-
-                <!-- Segunda Etapa de Recuperación de Contraseña (oculto inicialmente) -->
-                <form id="verifyCodeForm" style="display: none;">
-                    <h2>Verificar Código</h2>
-                    <div class="mb-3">
-                        <label for="verificationCode" class="form-label">Código de Verificación</label>
-                        <input type="text" class="form-control" id="verificationCode" required>
-                    </div>
-                    <button type="button" class="btn btn-primary" id="verifyCodeButton">Verificar</button>
-                </form>
-
-                <!-- Tercera Etapa de Recuperación de Contraseña (oculto inicialmente) -->
-                <form id="resetPasswordForm" style="display: none;">
-                    <h2>Restablecer Contraseña</h2>
-                    <div class="mb-3">
-                        <label for="newPassword" class="form-label">Nueva Contraseña</label>
-                        <input type="password" class="form-control" id="newPassword" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-                        <input type="password" class="form-control" id="confirmNewPassword" required>
-                        <div id="resetPasswordFeedback" class="invalid-feedback">La contraseña debe contener al menos una mayúscula y un número, y coincidir con la confirmación</div>
-                    </div>
-                    <button type="button" class="btn btn-primary" id="resetPasswordButton">Restablecer Contraseña</button>
+                    <p style="margin-top: 15px;"><a href="/frontend/templates/signin.html" id="toggleLogin">¿Ya tienes cuenta? Inicia sesión aquí</a></p>
                 </form>
             </div>
         </div>

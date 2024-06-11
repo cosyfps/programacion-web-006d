@@ -16,9 +16,22 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
+from apps.views import (
+    LibroCreateView,
+    LibroListView,
+    LibroDeleteView,
+    CarritoCompraDetailView,
+    AddItemCarritoView,
+    RemoveItemCarritoView,
+)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("",include("core.urls"))
+    path("libros/", LibroListView.as_view(), name="libro-list"),
+    path("libros/crear/", LibroCreateView.as_view(), name="libro-create"),
+    path("libros/eliminar/<int:pk>/", LibroDeleteView.as_view(), name="libro-delete"),
+    path("carrito/", CarritoCompraDetailView.as_view(), name="carrito-detalle"),
+    path("carrito/agregar/", AddItemCarritoView.as_view(), name="carrito-agregar"),
+    path("carrito/eliminar/", RemoveItemCarritoView.as_view(), name="carrito-eliminar"),
 ]

@@ -1,6 +1,6 @@
 :root {
-  --primary: rgba(111, 25, 25, 0.72);
-  --secondary: rgba(255, 255, 255, 0.856);
+  --primary: rgba(255, 255, 255, 0.850);
+  --secondary: rgba(255, 255, 255, 0.850);
   --light: white;
   --grey: #efefef;
 }

@@ -1,24 +1,3 @@
-// Función para mostrar el formulario de registro y ocultar el de login
-document.getElementById("toggleRegister").addEventListener("click", function(event) {
-    event.preventDefault();
-    document.getElementById("loginForm").style.display = "none";
-    document.getElementById("registerForm").style.display = "block";
-});
-
-// Función para mostrar el formulario de login y ocultar el de registro
-document.getElementById("toggleLogin").addEventListener("click", function(event) {
-    event.preventDefault();
-    document.getElementById("loginForm").style.display = "block";
-    document.getElementById("registerForm").style.display = "none";
-});
-
-// Función para mostrar el formulario de recuperación de contraseña y ocultar el de login
-document.getElementById("toggleForgotPassword").addEventListener("click", function(event) {
-    event.preventDefault();
-    document.getElementById("loginForm").style.display = "none";
-    document.getElementById("forgotPasswordForm").style.display = "block";
-});
-
 // Validación de correo electrónico en tiempo real
 const registerEmail = document.getElementById("registerEmail");
 const emailFeedback = document.getElementById("emailFeedback");
