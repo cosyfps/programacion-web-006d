@@ -16,11 +16,15 @@ body {
   background-color: black;
   font-family: "Roboto", sans-serif;
   color: white;
-  background: url(/frontend/static/assets/img/bg3.png) no-repeat;
   height: 90vh;
-  background-size: contain;
   background-position: center top;
+  background-image: url('/static/assets/img/bg3.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
+
+
 
 h1 {
   color: white;
@@ -50,7 +54,7 @@ header {
   width: 225px;
   height: 168.75px;
   cursor: pointer;
-  background-image: url("/frontend/static/assets/img/logo2.png");
+  background-image: url('/static/assets/img/logo2.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -135,7 +139,7 @@ nav li a:hover::after {
   }
 
   #logo-fluid {
-    content: url(/frontend/static/assets/img/logo2.png);
+    content: url('/static/assets/img/logo2.png');
   }
 
 }

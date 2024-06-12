@@ -16,22 +16,22 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
-from apps.views import (
-    LibroCreateView,
-    LibroListView,
-    LibroDeleteView,
-    CarritoCompraDetailView,
-    AddItemCarritoView,
-    RemoveItemCarritoView,
-)
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+from apps import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("libros/", LibroListView.as_view(), name="libro-list"),
-    path("libros/crear/", LibroCreateView.as_view(), name="libro-create"),
-    path("libros/eliminar/<int:pk>/", LibroDeleteView.as_view(), name="libro-delete"),
-    path("carrito/", CarritoCompraDetailView.as_view(), name="carrito-detalle"),
-    path("carrito/agregar/", AddItemCarritoView.as_view(), name="carrito-agregar"),
-    path("carrito/eliminar/", RemoveItemCarritoView.as_view(), name="carrito-eliminar"),
-]
+    path("", include("apps.urls")),
+    # -------------------------------------------------------------------------
+    path("", views.home_page, name="home_page"),
+    path("catalogue/", views.catalogue, name="catalogue"),
+    path("contact/", views.contact, name="contact"),
+    path("register/", views.register, name="register"),
+    path("signin/", views.signin_user, name="signin"),
+    path("logout/", views.logout_view, name="logout"),
+] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
+
+
+# -------------------------------------------------------------------------------

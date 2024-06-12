@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>BiblioWeb</title>
     <!-- CSS -->
-    <link href="/frontend/static/css/styles.css" rel="stylesheet" />
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">   
     <!-- favicon -->
-    <link rel="icon" type="image/x-icon" href="/frontend/static/assets/favicon.ico" />
-    <!--Google Fonts-->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
@@ -32,50 +33,57 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link fw-bold fs-4" aria-current="page" href="/frontend/templates/home-page.html">Inicio</a>
+                        <a class="nav-link fw-bold fs-4" aria-current="page" href="{% url 'home_page' %}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-bold fs-4" href="/frontend/templates/catalogue.html">Catálogo</a>
+                        <a class="nav-link fw-bold fs-4" href="{% url 'catalogue' %}">Catálogo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-bold fs-4" href="/frontend/templates/contact.html">Contacto</a>
+                        <a class="nav-link fw-bold fs-4" href="{% url 'contact' %}">Contacto</a>
                     </li>
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold fs-4" href="/frontend/templates/signin.html">Iniciar Sesión</a>
+                        <a class="nav-link fw-bold fs-4" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
                     </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold fs-4" href="{% url 'signin' %}">Iniciar Sesión</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Content -->
-    <div class="container-md" id="logincontent">
+    <div class="container-md" id="logincontent" style="margin-top: 50px;">
         <div class="row">
             <div class="col" id="loginbox">
-                <img src="/frontend/static/assets/img/blacklogo.svg" id="logo-fluid" alt="" style="max-width: 70vh;">
-                <!-- Formulario de Registro-->
-                <form id="registerForm">
+                <img src="{% static 'assets/img/blacklogo.svg' %}" id="logo-fluid" alt="" style="max-width: 70vh;">
+                 <!-- Formulario de Login -->
+                 <form id="registerForm" method="POST">
+                    {% csrf_token %}
                     <h2>Registro</h2>
                     <div class="mb-3">
                         <label for="registerName" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="registerName" required>
+                        <input type="text" class="form-control" id="registerName" name="registerName" required>
                     </div>
                     <div class="mb-3">
                         <label for="registerEmail" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="registerEmail" required>
+                        <input type="email" class="form-control" id="registerEmail" name="registerEmail" required>
                         <div id="emailFeedback" class="invalid-feedback">Ingrese un correo electrónico válido</div>
                     </div>
                     <div class="mb-3">
                         <label for="registerPassword" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="registerPassword" required>
+                        <input type="password" class="form-control" id="registerPassword" name="registerPassword" required>
                     </div>
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-                        <input type="password" class="form-control" id="confirmPassword" required>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
                         <div id="passwordFeedback" class="invalid-feedback">La contraseña debe contener al menos una mayúscula y un número, y coincidir con la confirmación</div>
                     </div>
                     <button type="submit" class="btn btn-primary">Registrarse</button>
-                    <p style="margin-top: 15px;"><a href="/frontend/templates/signin.html" id="toggleLogin">¿Ya tienes cuenta? Inicia sesión aquí</a></p>
+                    <p style="margin-top: 15px;"><a href="{% url 'signin' %}" id="toggleLogin">¿Ya tienes cuenta? Inicia sesión aquí</a></p>
                 </form>
             </div>
         </div>
@@ -83,14 +91,14 @@
 
     <!-- Footer -->
     <footer>
-        <div>
-            <div>
-                <div>Copyright &copy; BiblioWeb 2024</div>
-            </div>
+        <div class="text-center py-3">
+            <div>Copyright &copy; BiblioWeb 2024</div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/frontend/static/javascript/signin.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    
 </body>
 </html>
