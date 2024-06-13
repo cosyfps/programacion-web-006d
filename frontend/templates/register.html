@@ -38,14 +38,17 @@
                     <li class="nav-item">
                         <a class="nav-link fw-bold fs-4" href="{% url 'catalogue' %}">Catálogo</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold fs-4" href="{% url 'contact' %}">Contacto</a>
-                    </li>
                     {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold fs-4" href="#"><i class="fas fa-shopping-cart cart-icon"></i> Carrito de Compra</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link fw-bold fs-4" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
                     </li>
                     {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold fs-4" href="{% url 'contact' %}">Contacto</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active fw-bold fs-4" href="{% url 'signin' %}">Iniciar Sesión</a>
                     </li>
@@ -65,21 +68,21 @@
                     {% csrf_token %}
                     <h2>Registro</h2>
                     <div class="mb-3">
-                        <label for="registerName" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="registerName" name="registerName" required>
+                        <label style="margin-right: 340px;" for="registerName" class="form-label">Usuario:</label>
+                        <input placeholder="Usuario" type="text" class="form-control" id="registerName" name="registerName" required>
                     </div>
                     <div class="mb-3">
-                        <label for="registerEmail" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="registerEmail" name="registerEmail" required>
+                        <label style="margin-right: 260px;" for="registerEmail" class="form-label">Correo Electrónico:</label>
+                        <input placeholder="Email" type="email" class="form-control" id="registerEmail" name="registerEmail" required>
                         <div id="emailFeedback" class="invalid-feedback">Ingrese un correo electrónico válido</div>
                     </div>
                     <div class="mb-3">
-                        <label for="registerPassword" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" id="registerPassword" name="registerPassword" required>
+                        <label style="margin-right: 310px;" for="registerPassword" class="form-label">Contraseña:</label>
+                        <input placeholder="Contraseña" type="password" class="form-control" id="registerPassword" name="registerPassword" required>
                     </div>
                     <div class="mb-3">
-                        <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                        <label style="margin-right: 230px;" for="confirmPassword" class="form-label">Confirmar Contraseña:</label>
+                        <input placeholder="Confirmar contraseña" type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
                         <div id="passwordFeedback" class="invalid-feedback">La contraseña debe contener al menos una mayúscula y un número, y coincidir con la confirmación</div>
                     </div>
                     <button type="submit" class="btn btn-primary">Registrarse</button>

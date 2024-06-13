@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
-<body style="background-color: black;">
+<body style="background-color: rgb(0, 0, 0);">
     
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
@@ -39,6 +39,9 @@
                         <a class="nav-link active fw-bold fs-4" href="{% url 'catalogue' %}">Catálogo</a>
                     </li>
                     {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold fs-4" href="#"><i class="fas fa-shopping-cart cart-icon"></i> Carrito de Compra</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link fw-bold fs-4" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
                     </li>
@@ -73,31 +76,14 @@
     <div class="container-md">
         <div class="row">
             <div class="col text-center">
-              <div class="image-container">
-                <a href="/frontend/templates/download/5-lenguajes-del-amor.html"><img src="{% static 'assets/img/PORTADAS/5-lenguajes-del-amor.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/50-tecnicas-mindfullnes.html"><img src="{% static 'assets/img/PORTADAS/50-tecnicas-mindfullnes.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/a-fuego-lento.html"><img src="{% static 'assets/img/PORTADAS/a-fuego-lento.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/como-el-fuego.html"><img src="{% static 'assets/img/PORTADAS/como-el-fuego.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/confiar-again.html"><img src="{% static 'assets/img/PORTADAS/confiar.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/corazon-oscuro.html"><img src="{% static 'assets/img/PORTADAS/corazon-oscuro.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/desarrolla-una-mente-prodigiosa.html"><img src="{% static 'assets/img/PORTADAS/dearrolla-una-mente-prodigiosa.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/el-alquimista.html"><img src="{% static 'assets/img/PORTADAS/el-alquimista.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/el-arte-de-la-guerra.html"><img src="{% static 'assets/img/PORTADAS/el-arte-de-la-guerra.png' %}" alt=""></a>
-                <a href="/frontend/templates/download/el-principe-del-sol.html"><img src="{% static 'assets/img/PORTADAS/el-principe-del-sol.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/gestiona-mejor-tu-vida.html"><img src="{% static 'assets/img/PORTADAS/gestiona-mejor-tu-vida.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/ingles-en-7-dias.html"><img src="{% static 'assets/img/PORTADAS/ingles-en-7-dias.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/lolita.html"><img src="{% static 'assets/img/PORTADAS/lolita.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/matar-un-reino.html"><img src="{% static 'assets/img/PORTADAS/matar-un-reino.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/metodo-ikigai.html"><img src="{% static 'assets/img/PORTADAS/metodo-ikigai.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/oceano-ojos.html"><img src="{% static 'assets/img/PORTADAS/oceano-ojos.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/perfectos-mentirosos.html"><img src="{% static 'assets/img/PORTADAS/perfectos-mentirosos.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/prohibido.html"><img src="{% static 'assets/img/PORTADAS/prohibido.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/renegados.html"><img src="{% static 'assets/img/PORTADAS/renegados.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/seis-de-cuervos.html"><img src="{% static 'assets/img/PORTADAS/seis-de-cuervos.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/semana-laboral-de-4-horas.html"><img src="{% static 'assets/img/PORTADAS/semana-laboral-4-horas.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/the-unhoneymooners.html"><img src="{% static 'assets/img/PORTADAS/the-unhoneymooners.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/todo-lo-que-nunca-fuimos.html"><img src="{% static 'assets/img/PORTADAS/todo-lo-que-nunca-fuimos.jpg' %}" alt=""></a>
-                <a href="/frontend/templates/download/true-colors.html"><img src="{% static 'assets/img/PORTADAS/true-colors.jpg' %}" alt=""></a>
+              <div class="image-container" style="margin: 100px;">
+                {% for libro in libros %}
+                    {% if libro.portadaLibro %}
+                        <a href="{% url 'libro_detail' libro.id %}"><img style="max-width: 300px; width: 200px; max-height: 300px; height: 300px;" src="{% static 'assets/img/PORTADAS/' %}{{ libro.portadaLibro }}" alt="{{ libro.tituloLibro }}"></a>
+                    {% else %}
+                        N/A
+                    {% endif %}
+                {% endfor %}
             </div>
             </div>
         </div>
@@ -113,43 +99,6 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/frontend/static/javascript/api.js"></script>
-    <script>
-        document.getElementById("search-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Evita que el formulario se envíe
-
-            // Obtiene el valor del campo de búsqueda
-            var searchTerm = document.getElementById("barra-busqueda").value.trim();
-
-            // Realiza la solicitud a la API de Google Books
-            fetch("https://www.googleapis.com/books/v1/volumes?q=" + searchTerm)
-                .then(response => response.json())
-                .then(data => {
-                    // Limpia el contenedor de resultados
-                    document.getElementById("result").innerHTML = "";
-
-                    // Itera sobre los resultados y los muestra
-                    data.items.forEach(item => {
-                        var title = item.volumeInfo.title;
-                        var authors = item.volumeInfo.authors ? item.volumeInfo.authors.join(", ") : "Autor desconocido";
-                        var thumbnail = item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.thumbnail : "https://via.placeholder.com/150";
-                        var downloadLink = item.accessInfo.pdf ? item.accessInfo.pdf.downloadLink : "#";
-
-                        // Crea un elemento para mostrar el resultado
-                        var resultItem = document.createElement("div");
-                        resultItem.innerHTML = `
-                            <h3>${title}</h3>
-                            <p>Author(s): ${authors}</p>
-                            <a href="${downloadLink}" target="_blank">
-                                <img src="${thumbnail}" alt="Thumbnail">
-                            </a>
-                        `;
-
-                        // Agrega el resultado al contenedor
-                        document.getElementById("result").appendChild(resultItem);
-                    });
-                })
-                .catch(error => console.error("Error fetching data:", error));
-        });
-    </script>
+    <script></script>
 </body>
 </html>

@@ -11,8 +11,7 @@ $(document).ready(function () {
         },
         messages: {
             username: {
-                required: "Por favor ingresa tu correo electrónico",
-                email: "Por favor ingresa un correo electrónico válido"
+                required: "Por favor ingresa tu usuario."
             },
             password: {
                 required: "Por favor ingresa tu contraseña"

@@ -57,7 +57,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": BASE_DIR / "database/db.sqlite3",
     }
 }
 
@@ -87,10 +87,13 @@ USE_TZ = True
 LOGIN_URL = "/signin"
 
 STATIC_URL = "/static/"
-
 STATICFILES_DIRS = [
     FRONTEND_DIR / "static",
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "database/img")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -137,4 +140,4 @@ EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "kelvin.morenog28@gmail.com"
-EMAIL_HOST_PASSWORD = ""
+EMAIL_HOST_PASSWORD = "tnrg vkas cczk wzzs"

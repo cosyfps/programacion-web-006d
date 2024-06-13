@@ -60,7 +60,7 @@
                         <a class="nav-link sidebar-item" href="{% url 'libros_list' %}">Libros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link sidebar-item" href="{% url 'user_list' %}">Usuarios</a>
+                        <a class="nav-link active sidebar-item" href="{% url 'user_list' %}">Usuarios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link sidebar-item" href="{% url 'home_page' %}">Salir</a>
@@ -69,7 +69,40 @@
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div style="margin-top: 100px;" class="content">
-                    <h1>Panel de Administacion BiblioWeb</h1>
+                    <h1>Lista de Usuarios</h1>
+                    <div class="table-responsive">
+                        <table id="usersTable" class="table table-dark table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th style="border: 1px solid black;" >ID</th>
+                                    <th style="border: 1px solid black;" >Nombre</th>
+                                    <th style="border: 1px solid black;" >Email</th>
+                                    <th style="border: 1px solid black;" >Admin</th>
+                                    <th style="border: 1px solid black;" >Editar</th>
+                                    <th style="border: 1px solid black;" >Eliminar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                <tr >
+                                    <td style="border: 1px solid black;" padding: 8px;">{{ user.id }}</td>
+                                    <td style="border: 1px solid black;" padding: 8px;">{{ user.username }}</td>
+                                    <td style="border: 1px solid black;" padding: 8px;">{{ user.email }}</td>
+                                    <td style="border: 1px solid black;" padding: 8px;">{{ user.is_superuser }}</td>
+                                    <td style="border: 1px solid black;" padding: 8px;">
+                                        <a href="{% url 'user_update' user.id %}" class="btn btn-warning me-2">Editar</a>
+                                    </td>
+                                    <td padding: 8px;">
+                                        <a href="{% url 'user_delete' user.id %}" class="btn btn-danger">Eliminar</a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <button style="margin-top: 2rem;" class="btn btn-primary">
+                        <a href="{% url 'user_create' %}" style="color: white;">Agregar Usuario</a>
+                    </button>
                 </div>
             </main>
         </div>

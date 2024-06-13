@@ -26,12 +26,23 @@ urlpatterns = [
     path("", include("apps.urls")),
     # -------------------------------------------------------------------------
     path("", views.home_page, name="home_page"),
-    path("catalogue/", views.catalogue, name="catalogue"),
+    path("catalogue/", views.catalogueListView.as_view(), name="catalogue"),
+    path('libro/<int:libro_id>/', views.libro_detail, name='libro_detail'),
     path("contact/", views.contact, name="contact"),
     path("register/", views.register, name="register"),
     path("signin/", views.signin_user, name="signin"),
     path("logout/", views.logout_view, name="logout"),
-] + static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
-
+    path("administracion/", views.administracion, name="administracion"),
+    # -------------------------------------------------------------------------
+    path('administracion/libros/', views.LibroListView.as_view(), name='libros_list'),
+    path('administracion/libros/create/', views.LibroCreateView.as_view(), name='libros_create'),
+    path('administracion/libros/update/<int:pk>/', views.LibroUpdateView.as_view(), name='libros_update'),
+    path('administracion/libros/delete/<int:pk>/', views.LibroDeleteView.as_view(), name='libros_delete'),
+    # -------------------------------------------------------------------------
+    path('administracion/users/', views.UserListView.as_view(), name='user_list'),
+    path('administracion/user/create/', views.UserCreateView.as_view(), name='user_create'),
+    path('administracion/users/<int:pk>/update/', views.UserUpdateView.as_view(), name='user_update'),
+    path('administracion/users/<int:pk>/delete/', views.UserDeleteView.as_view(), name='user_delete'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # -------------------------------------------------------------------------------

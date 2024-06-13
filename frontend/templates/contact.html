@@ -40,6 +40,9 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
+                        <a class="nav-link fw-bold fs-4" href="#"><i class="fas fa-shopping-cart cart-icon"></i> Carrito de Compra</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link fw-bold fs-4" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
                     </li>
                     {% else %}
@@ -66,13 +69,9 @@
                     <h2>Recuperar contraseña</h2>
                     <h2>(Contacto)</h2>
                     <div class="mb-3">
-                        <label for="contactEmail" class="form-label">Correo Electrónico</label>
+                        <label for="contactEmail" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="contactEmail" name="email" required>
                         <div id="contactEmailFeedback" class="invalid-feedback">Ingrese un correo electrónico válido</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Mensaje</label>
-                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
                     <p style="margin-top: 15px;"></p>
