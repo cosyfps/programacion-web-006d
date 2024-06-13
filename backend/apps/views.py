@@ -95,10 +95,10 @@ class LibroCreateView(CreateView):
     def form_valid(self, form):
         libro = form.save(commit=False)
         archivo_libro = self.request.FILES.get("archivoLibro")
-        if archivo_libro.name and len(archivo_libro.name) > 100:
-            # Si el nombre del archivo supera los 100 caracteres, ajusta su nombre antes de guardarlo
-            archivo_libro.name = archivo_libro.name[:100]
-        libro.archivoLibro = archivo_libro
+        if archivo_libro:
+            if archivo_libro.name and len(archivo_libro.name) > 100:
+                archivo_libro.name = archivo_libro.name[:100]
+            libro.archivoLibro = archivo_libro
         libro.save()
         return redirect("libros_list")
 
