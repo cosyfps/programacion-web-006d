@@ -17,7 +17,6 @@ eggs/
 lib/
 lib64/
 parts/
-
 sdist/
 var/
 wheels/
@@ -68,7 +67,13 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docsJupyter Notebook
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+target/
+
+# Jupyter Notebook
 .ipynb_checkpoints
 
 # IPython
