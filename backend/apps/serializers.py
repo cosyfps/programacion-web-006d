@@ -1,9 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import (
-    GeneroLibro,
-    AutorLibro,
-    AnioLibro,
     Libro,
     CarritoCompra,
     ItemCarrito,
@@ -16,29 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ["id", "username", "email", "password"]
 
 
-class GeneroLibroSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = GeneroLibro
-        fields = "__all__"
-
-
-class AutorLibroSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AutorLibro
-        fields = "__all__"
-
-
-class AnioLibroSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = AnioLibro
-        fields = "__all__"
-
-
-class LibroSerializer(serializers.ModelSerializer):
-    generoLibro = GeneroLibroSerializer(read_only=True)
-    autorLibro = AutorLibroSerializer(read_only=True)
-    anioLibro = AnioLibroSerializer(read_only=True)
-
+class LibroSerializer(serializers.ModelSerializer):   
     class Meta:
         model = Libro
         fields = "__all__"

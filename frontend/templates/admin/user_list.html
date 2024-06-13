@@ -78,7 +78,6 @@
                                     <th style="border: 1px solid black;" >Nombre</th>
                                     <th style="border: 1px solid black;" >Email</th>
                                     <th style="border: 1px solid black;" >Admin</th>
-                                    <th style="border: 1px solid black;" >Editar</th>
                                     <th style="border: 1px solid black;" >Eliminar</th>
                                 </tr>
                             </thead>
@@ -89,9 +88,6 @@
                                     <td style="border: 1px solid black;" padding: 8px;">{{ user.username }}</td>
                                     <td style="border: 1px solid black;" padding: 8px;">{{ user.email }}</td>
                                     <td style="border: 1px solid black;" padding: 8px;">{{ user.is_superuser }}</td>
-                                    <td style="border: 1px solid black;" padding: 8px;">
-                                        <a href="{% url 'user_update' user.id %}" class="btn btn-warning me-2">Editar</a>
-                                    </td>
                                     <td padding: 8px;">
                                         <a href="{% url 'user_delete' user.id %}" class="btn btn-danger">Eliminar</a>
                                     </td>

@@ -21,6 +21,7 @@ from django.views.generic import (
 )
 
 from .models import *
+from .forms import LibroForm
 
 
 # Create your views here.
@@ -86,26 +87,20 @@ class LibroListView(LoginRequiredMixin, ListView):
     context_object_name = "libros"
 
 
-class LibroCreateView(LoginRequiredMixin, CreateView):
+class LibroCreateView(CreateView):
     model = Libro
-    fields = [
-        "tituloLibro",
-        "generoLibro",
-        "autorLibro",
-        "anioLibro",
-        "descripcionLibro",
-        "portadaLibro",
-        "precioLibro",
-    ]
+    form_class = LibroForm
     template_name = "admin/libros_form.html"
-    success_url = reverse_lazy("libros_list")
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["generos"] = GeneroLibro.objects.all()
-        context["autores"] = AutorLibro.objects.all()
-        context["anios"] = AnioLibro.objects.all()
-        return context
+    def form_valid(self, form):
+        libro = form.save(commit=False)
+        archivo_libro = self.request.FILES.get("archivoLibro")
+        if archivo_libro.name and len(archivo_libro.name) > 100:
+            # Si el nombre del archivo supera los 100 caracteres, ajusta su nombre antes de guardarlo
+            archivo_libro.name = archivo_libro.name[:100]
+        libro.archivoLibro = archivo_libro
+        libro.save()
+        return redirect("libros_list")
 
 
 class LibroUpdateView(LoginRequiredMixin, UpdateView):
@@ -118,8 +113,9 @@ class LibroUpdateView(LoginRequiredMixin, UpdateView):
         "descripcionLibro",
         "portadaLibro",
         "precioLibro",
+        "archivoLibro",
     ]
-    template_name = "admin/libros_form.html"
+    template_name = "admin/libros_update.html"
     success_url = reverse_lazy("libros_list")
 
 
@@ -152,7 +148,7 @@ class UserCreateView(LoginRequiredMixin, CreateView):
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     fields = ["username", "email"]
-    template_name = "admin/user_form.html"
+    template_name = "admin/user_update.html"
     success_url = reverse_lazy("user_list")
 
 
@@ -172,10 +168,6 @@ def home_page(request):
     return render(request, "home-page.html")
 
 
-# def catalogue(request):
-#     return render(request, "catalogue.html")
-
-
 class catalogueListView(ListView):
     model = Libro
     template_name = "catalogue.html"
@@ -185,7 +177,7 @@ class catalogueListView(ListView):
 @login_required
 def libro_detail(request, libro_id):
     libro = get_object_or_404(Libro, pk=libro_id)
-    return render(request, 'catalogue_detail.html', {'libro': libro})
+    return render(request, "catalogue_detail.html", {"libro": libro})
 
 
 # ! Configuracion Email
@@ -198,18 +190,20 @@ from django.shortcuts import render
 def contact(request):
     if request.method == "POST":
         email = request.POST.get("email")
-
-        subject = "Recuperación Contraseña"  # Asunto fijo
+        subject = "Recuperación Contraseña"
         email_content = f"Email: {email}\nSolicita recuperación de contraseña."
 
         send_mail(
             subject, email_content, email, ["kel.moreno@duocuc.cl"], fail_silently=False
         )
 
-        # return HttpResponseRedirect('/url/')  # Cambia '/url/' por la URL que desees
-        return HttpResponse("Mensaje enviado correctamente")
+        return HttpResponseRedirect("/contact/enviado/")
 
     return render(request, "contact.html")
+
+
+def contact_enviado(request):
+    return render(request, "contact_enviado.html")
 
 
 # -------------------------------------------------------------------------------
@@ -218,37 +212,16 @@ def contact(request):
 from django.shortcuts import render
 from rest_framework import viewsets
 from .models import (
-    GeneroLibro,
-    AutorLibro,
-    AnioLibro,
     Libro,
     CarritoCompra,
     ItemCarrito,
 )
 from django.contrib.auth.models import User
 from .serializers import (
-    GeneroLibroSerializer,
-    AutorLibroSerializer,
-    AnioLibroSerializer,
     LibroSerializer,
     CarritoCompraSerializer,
     ItemCarritoSerializer,
 )
-
-
-class GeneroLibroViewSet(viewsets.ModelViewSet):
-    queryset = GeneroLibro.objects.all()
-    serializer_class = GeneroLibroSerializer
-
-
-class AutorLibroViewSet(viewsets.ModelViewSet):
-    queryset = AutorLibro.objects.all()
-    serializer_class = AutorLibroSerializer
-
-
-class AnioLibroViewSet(viewsets.ModelViewSet):
-    queryset = AnioLibro.objects.all()
-    serializer_class = AnioLibroSerializer
 
 
 class LibroViewSet(viewsets.ModelViewSet):

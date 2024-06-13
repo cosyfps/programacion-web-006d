@@ -72,46 +72,7 @@
                     <h1>Agregar Nuevo Libro</h1>
                     <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="form-group">
-                            <label for="tituloLibro">Título del Libro</label>
-                            <input type="text" class="form-control" id="tituloLibro" name="tituloLibro" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="generoLibro">Género del Libro</label>
-                            <select class="form-control" id="generoLibro" name="generoLibro">
-                                {% for genero in generos %}
-                                    <option value="{{ genero.id }}">{{ genero.nombre }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="autorLibro">Autor del Libro</label>
-                            <select class="form-control" id="autorLibro" name="autorLibro">
-                                {% for autor in autores %}
-                                    <option value="{{ autor.id }}">{{ autor.nombre }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="anioLibro">Año del Libro</label>
-                            <select class="form-control" id="anioLibro" name="anioLibro">
-                                {% for anio in anios %}
-                                    <option value="{{ anio.id }}">{{ anio.anio }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="descripcionLibro">Descripción del Libro</label>
-                            <textarea class="form-control" id="descripcionLibro" name="descripcionLibro"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="portadaLibro">Portada del Libro</label>
-                            <input type="file" class="form-control" id="portadaLibro" name="portadaLibro">
-                        </div>
-                        <div class="form-group">
-                            <label for="precioLibro">Precio del Libro</label>
-                            <input type="number" step="0.01" class="form-control" id="precioLibro" name="precioLibro">
-                        </div>
+                        {{ form.as_p }}
                         <button type="submit" class="btn btn-primary mt-3">Guardar</button>
                     </form>
                 </div>

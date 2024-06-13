@@ -2,42 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class GeneroLibro(models.Model):
-    generoLibro = models.CharField(max_length=100, null=False, blank=False, default="")
-
-    def __str__(self):
-        return self.generoLibro
-
-
-class AutorLibro(models.Model):
-    nombreAutor = models.CharField(max_length=100, null=False, blank=False)
-    apellidoAutor = models.CharField(max_length=100, null=False, blank=False)
-
-    def __str__(self):
-        return f"{self.nombreAutor} {self.apellidoAutor}"
-
-
-class AnioLibro(models.Model):
-    anio = models.IntegerField(null=False, blank=False)
-
-    def __str__(self):
-        return str(self.anio)
-
-
 class Libro(models.Model):
     tituloLibro = models.CharField(max_length=200, null=False, blank=False)
-    generoLibro = models.ForeignKey(
-        GeneroLibro, null=True, blank=True, on_delete=models.SET_NULL
-    )
-    autorLibro = models.ForeignKey(
-        AutorLibro, null=True, blank=True, on_delete=models.SET_NULL
-    )
-    anioLibro = models.ForeignKey(
-        AnioLibro, null=True, blank=True, on_delete=models.SET_NULL
-    )
-    descripcionLibro = models.TextField(null=True, blank=True)
-    portadaLibro = models.ImageField(null=True, blank=True)
-    precioLibro = models.FloatField(null=True, blank=True)
+    generoLibro = models.CharField(max_length=200, null=True, blank=True)
+    autorLibro = models.CharField(max_length=200, null=True, blank=True)
+    anioLibro = models.IntegerField(null=True, blank=True)
+    descripcionLibro = models.TextField(max_length=200, null=True, blank=True)
+    portadaLibro = models.ImageField(upload_to="images/", null=True, blank=True)
+    precioLibro = models.IntegerField(null=True, blank=True)
+    archivoLibro = models.FileField(upload_to="documents/", null=True, blank=True)
 
     def __str__(self):
         return self.tituloLibro

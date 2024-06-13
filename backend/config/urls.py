@@ -29,6 +29,7 @@ urlpatterns = [
     path("catalogue/", views.catalogueListView.as_view(), name="catalogue"),
     path('libro/<int:libro_id>/', views.libro_detail, name='libro_detail'),
     path("contact/", views.contact, name="contact"),
+    path('contact/enviado/', views.contact_enviado, name='contact_enviado'),
     path("register/", views.register, name="register"),
     path("signin/", views.signin_user, name="signin"),
     path("logout/", views.logout_view, name="logout"),
@@ -43,6 +44,13 @@ urlpatterns = [
     path('administracion/user/create/', views.UserCreateView.as_view(), name='user_create'),
     path('administracion/users/<int:pk>/update/', views.UserUpdateView.as_view(), name='user_update'),
     path('administracion/users/<int:pk>/delete/', views.UserDeleteView.as_view(), name='user_delete'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] 
 
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+	
 # -------------------------------------------------------------------------------
