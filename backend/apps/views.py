@@ -348,6 +348,3 @@ class TarjetaCompraViewSet(viewsets.ModelViewSet):
     queryset = TarjetaCompra.objects.all()
     serializer_class = TarjetaCompraSerializer
 
-class MyViewSet(viewsets.ViewSet):
-    def list(self, request):
-        return Response({"message": "Hello, World!"})

@@ -5,7 +5,6 @@ from .views import (
     OrderViewSet,
     OrderItemViewSet,
     TarjetaCompraViewSet,
-    MyViewSet,
 )
 
 router = DefaultRouter()
@@ -13,7 +12,6 @@ router.register(r'Libro', LibroViewSett, basename='libro')
 router.register(r'Order', OrderViewSet, basename='order')
 router.register(r'OrdeItem', OrderItemViewSet, basename='orderitem')
 router.register(r'TarjetaCompra', TarjetaCompraViewSet, basename='tarjetacompra')
-router.register(r'myview', MyViewSet, basename='myview')
 
 urlpatterns = [
     *router.urls,

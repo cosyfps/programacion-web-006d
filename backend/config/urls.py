@@ -22,10 +22,8 @@ from django.conf.urls.static import static
 from apps import views
 
 urlpatterns = [
-    path('api/', include('apps.urls')),
-    # -------------------------------------------------------------------------
     path("admin/", admin.site.urls),
-    path("", include("apps.urls")),
+    path("api/", include("apps.urls")),
     # -------------------------------------------------------------------------
     path("", views.home_page, name="home_page"),
     path("catalogue/", views.catalogueListView.as_view(), name="catalogue"),
