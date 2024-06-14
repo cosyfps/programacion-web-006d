@@ -107,7 +107,6 @@ class LibroUpdateView(LoginRequiredMixin, UpdateView):
     model = Libro
     fields = [
         "tituloLibro",
-        "generoLibro",
         "autorLibro",
         "anioLibro",
         "descripcionLibro",
@@ -180,6 +179,32 @@ def libro_detail(request, libro_id):
     return render(request, "catalogue_detail.html", {"libro": libro})
 
 
+def cart(request):
+    if request.user.is_authenticated:
+        user = request.user
+        order, created = Order.objects.get_or_create(user=user, complete=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {"get_cart_total": 0, "get_cart_items": 0}
+
+    context = {"items": items, "order": order}
+    return render(request, "cart.html", context)
+
+
+def checkout(request):
+    if request.user.is_authenticated:
+        user = request.user
+        order, created = Order.objects.get_or_create(user=user, complete=False)
+        items = order.orderitem_set.all()
+    else:
+        items = []
+        order = {"get_cart_total": 0, "get_cart_items": 0}
+
+    context = {"items": items, "order": order}
+    return render(request, "checkout.html", context)
+
+
 # ! Configuracion Email
 
 from django.core.mail import send_mail
@@ -213,27 +238,13 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from .models import (
     Libro,
-    CarritoCompra,
-    ItemCarrito,
 )
 from django.contrib.auth.models import User
 from .serializers import (
     LibroSerializer,
-    CarritoCompraSerializer,
-    ItemCarritoSerializer,
 )
 
 
 class LibroViewSet(viewsets.ModelViewSet):
     queryset = Libro.objects.all()
     serializer_class = LibroSerializer
-
-
-class CarritoCompraViewSet(viewsets.ModelViewSet):
-    queryset = CarritoCompra.objects.all()
-    serializer_class = CarritoCompraSerializer
-
-
-class ItemCarritoViewSet(viewsets.ModelViewSet):
-    queryset = ItemCarrito.objects.all()
-    serializer_class = ItemCarritoSerializer

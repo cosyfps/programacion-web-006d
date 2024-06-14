@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
-<body style="background-color: black;">
+<body style="background-color: rgb(0, 0, 0);">
     
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
@@ -53,7 +53,7 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link fw-bold fs-4" href="{% url 'cart' %}"><i class="fas fa-shopping-cart cart-icon"></i> Carrito de Compra</a>
+                        <a class="nav-link active fw-bold fs-4" href="{% url 'cart' %}"><i class="fas fa-shopping-cart cart-icon"></i> Carrito de Compra</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fw-bold fs-4" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
@@ -63,37 +63,81 @@
                         <a class="nav-link fw-bold fs-4" href="{% url 'contact' %}">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fw-bold fs-4" href="{% url 'signin' %}">Iniciar Sesión</a>
+                        <a class="nav-link fw-bold fs-4" href="{% url 'signin' %}">Iniciar Sesión</a>
                     </li>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
-
+    
     <!-- Content -->
-    <div class="container-md" id="logincontent" style="margin-top: 50px;">
+    <div class="container-md" id="infobook" style="margin-top: 50px;">
         <div class="row">
-            <div class="col" id="loginbox">
-                <img src="{% static 'assets/img/blacklogo.svg' %}" id="logo-fluid" alt="" style="max-width: 70vh;">
-                 <!-- Formulario de Login -->
-                 <form id="loginForm" method="POST">
-                    {% csrf_token %}
-                    <h2>Iniciar Sesión</h2>
-                    <div class="mb-3">
-                        <label style="margin-right: 340px;" for="loginUsername" class="form-label">Usuario:</label>
-                        <input placeholder="Ingrese su usuario" type="text" class="form-control" id="loginUsername" name="username" required>
-                    </div>
-                    <div class="mb-3">
-                        <label style="margin-right: 310px;" for="loginPassword" class="form-label">Contraseña:</label>
-                        <input placeholder="Ingrese su contraseña" type="password" class="form-control" id="loginPassword" name="password" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-                    <p style="margin-top: 15px;"><a href="{% url 'register' %}" id="toggleRegister">¿No tienes cuenta? Regístrate aquí</a></p>
-                    <p><a href="{% url 'contact' %}" id="toggleForgotPassword">¿Olvidaste tu contraseña?</a></p>
-                </form>
-                
+            <div class="col-lg-6">
+                <div class="box-element" id="form-wrapper">
+                    <form id="form">
+                        <div id="user-info">
+                            <hr>
+                            <h3>Contacto:</h3>
+                            <div class="form-field">
+                                <input required class="form-control" type="text" name="rut" placeholder="Rut..">
+                            </div>
+                            <div class="form-field">
+                                <input required class="form-control" type="text" name="telefono" placeholder="Telefono..">
+                            </div>
+                        </div>
+
+                        <div id="shipping-info">
+                            <hr>
+                            <h3>Tarjeta:</h3>
+                            <hr>
+                            <div class="form-field">
+                                <input class="form-control" type="number" name="numeroTarjeta" placeholder="Numero Tarjeta..">
+                            </div>
+                            <div class="form-field">
+                                <input class="form-control" type="text" name="nombreTitular" placeholder="Nombre Titular..">
+                            </div>
+                            <div class="form-field">
+                                <input class="form-control" type="text" name="fechaCaducidad" placeholder="Año/Mes">
+                            </div>
+                            <div class="form-field">
+                                <input class="form-control" type="number" name="codigoCvc" placeholder="Codigo CVC..">
+                                </div>
+                            <div class="form-field">
+                                <input class="form-control" type="text" name="zipcode" placeholder="Zip code..">
+                            </div>
+                        </div>
+
+                        <hr>
+                        <input style="width: 615px;" id="form-button" class="btn btn-success btn-block" type="submit" value="Pagar">
+                    </form>
+                </div>
+                <br>
+
+                <div class="box-element hidden" id="payment-info">
+                    <small>Paypal</small>
+                </div>
+
             </div>
+
+            <dic class="col-lg-6">
+                <div class="box-element">
+                        <hr>
+                    <h3>Resumen del pedido</h3>
+                    <hr>
+                    {% for item in items %}
+                    <div class="cart-row">
+                        <div style="flex:2"><img style="max-width: 100px; max-height: 150px; width: 100px; height: 150px;" class="row-image" src="{{ item.libro.portadaLibro.url }}" alt=""></div>
+                        <div style="flex:2"><p>{{item.libro.tituloLibro}}</p></div>
+                        <div style="flex:1"><p>${{item.libro.precioLibro|floatformat:2}}</p></div>
+                        <div style="flex:1"><p>x{{item.quantity}}</p></div>
+                    </div>
+                    {% endfor %}
+                    <h5>Items: {{order.get_cart_items}}</h5>
+                    <h5>Total: {{order.get_cart_total|floatformat:2}}</h5>
+                </div>
+            </dic>
         </div>
     </div>
 
@@ -107,6 +151,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/frontend/static/javascript/signin.js"></script>
+    <script></script>
 </body>
 </html>

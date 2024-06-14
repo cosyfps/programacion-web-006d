@@ -1,11 +1,13 @@
 from django.contrib import admin
 from .models import (
     Libro,
-    CarritoCompra,
-    ItemCarrito,
+    Order,
+    OrderItem,
+    TarjetaCompra,
 )
 
 # Register your models here.
 admin.site.register(Libro)
-admin.site.register(CarritoCompra)
-admin.site.register(ItemCarrito)
+admin.site.register(Order)
+admin.site.register(OrderItem)
+admin.site.register(TarjetaCompra)

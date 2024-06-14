@@ -53,7 +53,7 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link fw-bold fs-4" href="#"><i class="fas fa-shopping-cart cart-icon"></i> Carrito de Compra</a>
+                        <a class="nav-link fw-bold fs-4" href="{% url 'cart' %}"><i class="fas fa-shopping-cart cart-icon"></i> Carrito de Compra</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fw-bold fs-4" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
