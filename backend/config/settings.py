@@ -101,6 +101,7 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [
     FRONTEND_DIR / "static",
 ]
+
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_URL = "/media/"
@@ -111,10 +112,7 @@ DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
-    ),
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
 }
 
 from datetime import timedelta

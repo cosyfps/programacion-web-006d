@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.hashers import make_password
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
@@ -320,15 +318,36 @@ def contact_enviado(request):
 
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import (
-    Libro,
-)
+from rest_framework.response import Response
+from .models import Libro, Order, OrderItem, TarjetaCompra
 from django.contrib.auth.models import User
 from .serializers import (
     LibroSerializer,
+    OrderSerializer,
+    OrderItemSerializer,
+    TarjetaCompraSerializer,
 )
 
-
-class LibroViewSet(viewsets.ModelViewSet):
+# Create your views here.
+class LibroViewSett(viewsets.ModelViewSet):
     queryset = Libro.objects.all()
     serializer_class = LibroSerializer
+
+
+class OrderViewSet(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+
+
+class OrderItemViewSet(viewsets.ModelViewSet):
+    queryset = OrderItem.objects.all()
+    serializer_class = OrderItemSerializer
+
+
+class TarjetaCompraViewSet(viewsets.ModelViewSet):
+    queryset = TarjetaCompra.objects.all()
+    serializer_class = TarjetaCompraSerializer
+
+class MyViewSet(viewsets.ViewSet):
+    def list(self, request):
+        return Response({"message": "Hello, World!"})

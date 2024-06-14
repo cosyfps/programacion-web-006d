@@ -61,8 +61,6 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.libro.tituloLibro
 
     @property
     def get_total(self):

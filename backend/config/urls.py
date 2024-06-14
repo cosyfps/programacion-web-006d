@@ -22,6 +22,8 @@ from django.conf.urls.static import static
 from apps import views
 
 urlpatterns = [
+    path('api/', include('apps.urls')),
+    # -------------------------------------------------------------------------
     path("admin/", admin.site.urls),
     path("", include("apps.urls")),
     # -------------------------------------------------------------------------
@@ -48,13 +50,11 @@ urlpatterns = [
     path('administracion/user/create/', views.UserCreateView.as_view(), name='user_create'),
     path('administracion/users/<int:pk>/update/', views.UserUpdateView.as_view(), name='user_update'),
     path('administracion/users/<int:pk>/delete/', views.UserDeleteView.as_view(), name='user_delete'),
-] 
+]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-	
-# -------------------------------------------------------------------------------
