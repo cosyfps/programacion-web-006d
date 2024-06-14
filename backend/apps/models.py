@@ -6,8 +6,9 @@ class Libro(models.Model):
     tituloLibro = models.CharField(max_length=200, null=True, blank=True)
     autorLibro = models.CharField(max_length=200, null=True, blank=True)
     anioLibro = models.IntegerField(null=True, blank=True)
-    descripcionLibro = models.TextField(max_length=200, null=True, blank=True)
+    descripcionLibro = models.TextField(max_length=1000, null=True, blank=True)
     precioLibro = models.DecimalField(max_digits=10, decimal_places=2)
+    digital = models.BooleanField(default=True, null=True, blank=True)
     portadaLibro = models.ImageField(upload_to="images/", null=True, blank=True)
     archivoLibro = models.FileField(upload_to="documents/", null=True, blank=True)
 
@@ -29,11 +30,20 @@ class Order(models.Model):
         return str(self.id)
 
     @property
+    def shipping(self):
+        shipping = False
+        orderitems = self.orderitem_set.all()
+        for i in orderitems:
+            if i.libro.digital == False:
+                shipping = True
+        return shipping
+
+    @property
     def get_cart_total(self):
         orderitems = self.orderitem_set.all()
         total = sum([item.get_total for item in orderitems])
         return total
-    
+
     @property
     def get_cart_items(self):
         orderitems = self.orderitem_set.all()

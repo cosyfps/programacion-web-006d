@@ -10,8 +10,9 @@ class LibroForm(forms.ModelForm):
             "autorLibro",
             "anioLibro",
             "descripcionLibro",
-            "portadaLibro",
             "precioLibro",
+            "digital",
+            "portadaLibro",
             "archivoLibro",
         ]
 

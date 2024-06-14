@@ -22,15 +22,26 @@ INSTALLED_APPS = [
     "apps",
 ]
 
+
+# Session settings
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  
+SESSION_COOKIE_AGE = 1209600  
+SESSION_COOKIE_SECURE = False  
+SESSION_COOKIE_HTTPONLY = True
+
+# Middleware settings
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Run migrations to ensure the database schema is up to date
+
 
 ROOT_URLCONF = "config.urls"
 

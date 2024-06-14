@@ -111,7 +111,7 @@ nav li a:hover::after {
 }
 
 #loginbox {
-  background-color: var(--secondary) !important;
+  background-color: rgb(65, 18, 18, 1);
 }
 
 #logincontent {
@@ -120,23 +120,22 @@ nav li a:hover::after {
 
 @media screen and (max-width: 992px) {
   #infotxt {
-    background-color: transparent;
-  }
+    background-color: rgb(65, 18, 18, 1);
+    }
 
   #loginbox h2 {
-    color: white;
+    color: rgb(255, 255, 255);
   }
 
   #loginbox {
-    color: white;
-  }
+    background-color: rgb(65, 18, 18, 1);
+    }
 
   #reviewbk {
     font-size: 1.5rem;
   }
   #loginbox {
-    background-color: transparent !important;
-    
+    background-color: rgb(65, 18, 18, 1);    
   }
 
 
@@ -505,6 +504,12 @@ input[type="submit"]:hover {
     box-shadow: -1px -3px 5px -2px rgba(214,214,214,1);
 }
 
+.img-thumbnail {
+  margin-top: -100px;
+  width: 150px; 
+  height: auto; 
+}
+
 .product{
 	border-radius: 0 0 4px 4px;
 }
@@ -519,15 +524,23 @@ input[type="submit"]:hover {
 	margin-left: 15px;
 }
 
-#cart-total{
-	display: block;
-	text-align: center;
-	color:#fff;
-	background-color: red;
-	width: 20px;
-	height: 25px;
-	border-radius: 50%;
-	font-size: 14px;
+.nav-item {
+  position: relative;
+}
+
+#cart-total {
+  position: absolute;
+  bottom: 12px; 
+  left: -2px; 
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 4px; 
+  font-size: 0.7rem; 
+  z-index: 1;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
 }
 
 .col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
@@ -579,5 +592,41 @@ input[type="submit"]:hover {
 
 
 .hidden{
-	display: none!important;
+	display: none;
 }
+
+#form-button {
+  width: 615px;
+  background-color: rgb(0, 129, 86);
+  color: white; /* Asegúrate de que el texto sea visible */
+}
+
+#form-button:hover {
+  background-color: rgb(0, 70, 46); /* Cambia el color de fondo cuando el cursor está sobre el botón */
+  color: white; /* Puedes cambiar el color del texto si lo deseas */
+  cursor: pointer; /* Cambia el cursor para indicar que el botón es interactivo */
+}
+
+#download-button {
+  width: 100px;
+  background-color: rgb(0, 129, 86);
+  color: white; /* Asegúrate de que el texto sea visible */
+  font-style: bold;
+  margin-left: 500px;
+}
+
+#download-button:hover {
+  background-color: rgb(0, 70, 46); /* Cambia el color de fondo cuando el cursor está sobre el botón */
+  color: white; /* Puedes cambiar el color del texto si lo deseas */
+  cursor: pointer; /* Cambia el cursor para indicar que el botón es interactivo */
+}
+
+/* Estilo para el formulario de recuperación de contraseña */
+#loginbox {
+  background-color: rgb(65, 18, 18, 0.8);
+  color: black; /* Cambiar el color del texto en el formulario */
+  padding: 20px; /* Agregar espaciado interno al formulario */
+  border-radius: 10px; /* Agregar bordes redondeados al formulario */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agregar sombra al formulario */
+}
+

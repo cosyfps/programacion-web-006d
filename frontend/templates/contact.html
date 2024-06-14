@@ -75,14 +75,14 @@
     <div class="container-md" id="logincontent" style="margin-top: 50px;">
         <div class="row">
             <div class="col" id="loginbox">
-                <img src="{% static 'assets/img/blacklogo.svg' %}" id="logo-fluid" alt="" style="max-width: 70vh;">
                  <!-- Formulario de Login -->
                  <form id="contactForm" action="{% url 'contact' %}" method="POST">
                     {% csrf_token %}
-                    <h2>Recuperar contraseña</h2>
-                    <h2>(Contacto)</h2>
+                    <br>
+                    <h2 style="color: white;">Recuperar contraseña</h2>
+                    <h2 style="color: white;">(Contacto)</h2>
                     <div class="mb-3">
-                        <label for="contactEmail" class="form-label">Email:</label>
+                        <label style="color: white;" for="contactEmail" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="contactEmail" name="email" required>
                         <div id="contactEmailFeedback" class="invalid-feedback">Ingrese un correo electrónico válido</div>
                     </div>

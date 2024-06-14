@@ -9,6 +9,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 from django.views import View
 from django.views.generic import (
@@ -53,6 +56,10 @@ def register(request):
             "signup.html",
             {"form": UserCreationForm, "error": "Passwords did not match."},
         )
+
+
+def register_error(request):
+    return render(request, "register_error.html")
 
 
 def signin_user(request):
@@ -110,8 +117,9 @@ class LibroUpdateView(LoginRequiredMixin, UpdateView):
         "autorLibro",
         "anioLibro",
         "descripcionLibro",
-        "portadaLibro",
         "precioLibro",
+        "digital",
+        "portadaLibro",
         "archivoLibro",
     ]
     template_name = "admin/libros_update.html"
@@ -164,7 +172,18 @@ def logout_view(request):
 
 
 def home_page(request):
-    return render(request, "home-page.html")
+    if request.user.is_authenticated:
+        user = request.user
+        order, created = Order.objects.get_or_create(user=user, complete=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {"get_cart_total": 0, "get_cart_items": 0, "shipping": False}
+        cartItems = order["get_cart_items"]
+
+    context = {"items": items, "order": order, "cartItems": cartItems}
+    return render(request, "home-page.html", context)
 
 
 class catalogueListView(ListView):
@@ -172,11 +191,42 @@ class catalogueListView(ListView):
     template_name = "catalogue.html"
     context_object_name = "libros"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        if self.request.user.is_authenticated:
+            user = self.request.user
+            order, created = Order.objects.get_or_create(user=user, complete=False)
+            items = order.orderitem_set.all()
+            cartItems = order.get_cart_items
+        else:
+            items = []
+            order = {"get_cart_total": 0, "get_cart_items": 0, "shipping": False}
+            cartItems = order["get_cart_items"]
+
+        context["items"] = items
+        context["order"] = order
+        context["cartItems"] = cartItems
+
+        return context
+
 
 @login_required
 def libro_detail(request, libro_id):
     libro = get_object_or_404(Libro, pk=libro_id)
-    return render(request, "catalogue_detail.html", {"libro": libro})
+
+    if request.user.is_authenticated:
+        user = request.user
+        order, created = Order.objects.get_or_create(user=user, complete=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:
+        items = []
+        order = {"get_cart_total": 0, "get_cart_items": 0, "shipping": False}
+        cartItems = order["get_cart_items"]
+
+    context = {"libro": libro, "items": items, "order": order, "cartItems": cartItems}
+    return render(request, "catalogue_detail.html", context)
 
 
 def cart(request):
@@ -184,11 +234,13 @@ def cart(request):
         user = request.user
         order, created = Order.objects.get_or_create(user=user, complete=False)
         items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
     else:
         items = []
-        order = {"get_cart_total": 0, "get_cart_items": 0}
+        order = {"get_cart_total": 0, "get_cart_items": 0, "shipping": False}
+        cartItems = order["get_cart_items"]
 
-    context = {"items": items, "order": order}
+    context = {"items": items, "order": order, "cartItems": cartItems}
     return render(request, "cart.html", context)
 
 
@@ -197,12 +249,44 @@ def checkout(request):
         user = request.user
         order, created = Order.objects.get_or_create(user=user, complete=False)
         items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
     else:
         items = []
-        order = {"get_cart_total": 0, "get_cart_items": 0}
+        order = {"get_cart_total": 0, "get_cart_items": 0, "shipping": False}
+        cartItems = order["get_cart_items"]
 
-    context = {"items": items, "order": order}
+    context = {"items": items, "order": order, "cartItems": cartItems}
     return render(request, "checkout.html", context)
+
+
+@csrf_exempt
+def updateItem(request):
+    data = json.loads(request.body)
+    libroId = data.get("libroId")
+    action = data.get("action")
+
+    print("Action:", action)
+    print("libroId:", libroId)
+
+    user = request.user
+    libro = Libro.objects.get(id=libroId)
+    order, created = Order.objects.get_or_create(user=user, complete=False)
+
+    orderItem, created = OrderItem.objects.get_or_create(order=order, libro=libro)
+
+    if action == "add":
+        orderItem.quantity = orderItem.quantity + 1
+    elif action == "remove":
+        orderItem.quantity = orderItem.quantity - 1
+    elif action == "delete":
+        orderItem.quantity = orderItem.quantity == 0
+
+    orderItem.save()
+
+    if orderItem.quantity <= 0:
+        orderItem.delete()
+
+    return JsonResponse("Item was added", safe=False)
 
 
 # ! Configuracion Email

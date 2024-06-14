@@ -52,8 +52,11 @@
                         <a class="nav-link active fw-bold fs-4" href="{% url 'catalogue' %}">Catálogo</a>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold fs-4" href="{% url 'cart' %}"><i class="fas fa-shopping-cart cart-icon"></i> Carrito de Compra</a>
+                    <li style="margin-left: 10px;" class="nav-item position-relative">
+                        <a class="nav-link fw-bold fs-4 position-relative" href="{% url 'cart' %}">
+                            <p id="cart-total" class="position-absolute top-2 start-1 translate-middle badge rounded-pill bg-danger">{{cartItems}}</p>
+                            <i class="fas fa-shopping-cart cart-icon"></i> Carrito de Compra
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fw-bold fs-4" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
@@ -89,7 +92,7 @@
     <div class="container-md">
         <div class="row">
             <div class="col text-center">
-              <div class="image-container" style="margin: 100px;">
+              <div class="image-container" style="margin: 100px; margin-left: 230px;">
                 {% for libro in libros %}
                     {% if libro.portadaLibro %}
                         <a href="{% url 'libro_detail' libro.id %}"><img style="max-width: 300px; width: 200px; max-height: 300px; height: 300px;" src="{{ libro.portadaLibro.url }}" alt="{{ libro.tituloLibro }}"></a>

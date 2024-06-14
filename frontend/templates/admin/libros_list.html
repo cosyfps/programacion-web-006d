@@ -75,11 +75,11 @@
                             <thead>
                                 <tr style="border: 1px solid black; background-color: #15725b;">
                                     <th style="border: 1px solid black;" >Título</th>
-                                    <th style="border: 1px solid black;" >Género</th>
                                     <th style="border: 1px solid black;" >Autor</th>
                                     <th style="border: 1px solid black;" >Año</th>
                                     <th style="border: 1px solid black;" >Descripción</th>
                                     <th style="border: 1px solid black;" >Portada</th>
+                                    <th style="border: 1px solid black;" >Fisico</th>
                                     <th style="border: 1px solid black;" >Precio</th>
                                     <th style="border: 1px solid black;" >Editar</th>
                                     <th style="border: 1px solid black;" >Eliminar</th>
@@ -90,7 +90,6 @@
                                 <tr style="border: 1px solid black;">
                                     <!-- Datos del libro -->
                                     <td style="border: 1px solid black;" >{{ libro.tituloLibro }}</td>
-                                    <td style="border: 1px solid black;" >{{ libro.generoLibro }}</td>
                                     <td style="border: 1px solid black;" >{{ libro.autorLibro }}</td>
                                     <td style="border: 1px solid black;" >{{ libro.anioLibro }}</td>
                                     <td style="border: 1px solid black;" >{{ libro.descripcionLibro }}</td>
@@ -101,6 +100,12 @@
                                             N/A
                                         {% endif %}
                                     </td>
+                                    <td style="border: 1px solid black;" >
+                                    {% if libro.digital %}
+                                        No
+                                    {% else %}
+                                        Si
+                                    {% endif %}</td>
                                     <td style="border: 1px solid black;" >${{ libro.precioLibro }}</td>
                                     <td style="border: 1px solid black;" >
                                         <a href="{% url 'libros_update' libro.id %}" class="btn btn-warning me-2">Editar</a>
