@@ -18,7 +18,7 @@ body {
   color: white;
   height: 90vh;
   background-position: center top;
-  background-image: url('/static/assets/img/bg3.png');
+  background-image: url(/frontend/static/assets/img/bg3.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -54,7 +54,7 @@ header {
   width: 225px;
   height: 168.75px;
   cursor: pointer;
-  background-image: url('/static/assets/img/logo2.png');
+  background-image: url(/frontend/static/assets/img/logo2.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -140,7 +140,7 @@ nav li a:hover::after {
 
 
   #logo-fluid {
-    content: url('/static/assets/img/logo2.png');
+    content: url(/frontend/static/assets/img/logo2.png);
   }
 
 }
