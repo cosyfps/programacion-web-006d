@@ -52,21 +52,19 @@
     <div class="container-fluid">
         <div class="row">
             <nav class="col-md-3 col-lg-2 d-md-block sidebar">
-                <div class="logo mb-3">
-                    <!-- Aquí puedes agregar un logo -->
-                </div>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link sidebar-item" href="{% url 'libros_list' %}">Libros</a>
+                        <a class="nav-link sidebar-item" href="/frontend/templates/admin/libros_list.html">Libros</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active sidebar-item" href="{% url 'user_list' %}">Usuarios</a>
+                        <a class="nav-link sidebar-item" href="/frontend/templates/admin/user_list.html">Usuarios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link sidebar-item" href="{% url 'home_page' %}">Salir</a>
+                        <a class="nav-link sidebar-item" href="/frontend/templates/home_page_auth.html">Salir</a>
                     </li>
                 </ul>
             </nav>
+
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div style="margin-top: 100px;" class="content">
                     <h1>Lista de Usuarios</h1>
@@ -82,6 +80,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 {% for user in users %}
                                 <tr >
                                     <td style="border: 1px solid black;" padding: 8px;">{{ user.id }}</td>
@@ -89,18 +88,20 @@
                                     <td style="border: 1px solid black;" padding: 8px;">{{ user.email }}</td>
                                     <td style="border: 1px solid black;" padding: 8px;">{{ user.is_superuser }}</td>
                                     <td padding: 8px;">
-                                        <a href="{% url 'user_delete' user.id %}" class="btn btn-danger">Eliminar</a>
+                                        <a href="/frontend/templates/admin/user_confirm_delete.html" class="btn btn-danger">Eliminar</a>
                                     </td>
                                 </tr>
                                 {% endfor %}
+                                
                             </tbody>
                         </table>
                     </div>
                     <button style="margin-top: 2rem;" class="btn btn-primary">
-                        <a href="{% url 'user_create' %}" style="color: white;">Agregar Usuario</a>
+                        <a href="/frontend/templates/admin/user_form.html" style="color: white;">Agregar Usuario</a>
                     </button>
                 </div>
             </main>
+
         </div>
     </div>
     <!-- Bootstrap Bundle with Popper -->
