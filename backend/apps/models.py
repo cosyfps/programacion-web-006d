@@ -1,14 +1,46 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser, Group, Permission
+
+
+class Usuario(AbstractUser):
+    username = models.CharField(max_length=200, null=True, blank=True)
+    email = models.CharField(max_length=200, null=True, blank=True)
+    password = models.CharField(max_length=200, null=True, blank=True)
+    password_confirmation = models.CharField(max_length=200, null=True, blank=True)
+    groups = models.ManyToManyField(
+        Group,
+        related_name="libros_user_set",
+        blank=True,
+        help_text=(
+            "The groups this user belongs to. A user will get all permissions granted to each of their groups."
+        ),
+        verbose_name=("groups"),
+    )
+    user_permissions = models.ManyToManyField(
+        Permission,
+        related_name="libros_user_set",
+        blank=True,
+        help_text=("Specific permissions for this user."),
+        verbose_name=("user permissions"),
+    )
+
+    def __str__(self):
+        return self.username
+
+    class Meta:
+        verbose_name = "usuario"
+        verbose_name_plural = "usuarios"
 
 
 class Libro(models.Model):
     tituloLibro = models.CharField(max_length=200, null=True, blank=True)
     autorLibro = models.CharField(max_length=200, null=True, blank=True)
+    generoLibro = models.CharField(max_length=200, null=True, blank=True)
     anioLibro = models.IntegerField(null=True, blank=True)
     descripcionLibro = models.TextField(max_length=1000, null=True, blank=True)
     precioLibro = models.DecimalField(max_digits=10, decimal_places=2)
     digital = models.BooleanField(default=True, null=True, blank=True)
+    stock = models.BooleanField(default=True, null=True, blank=True)
     portadaLibro = models.ImageField(upload_to="images/", null=True, blank=True)
     archivoLibro = models.FileField(upload_to="documents/", null=True, blank=True)
 
@@ -21,7 +53,7 @@ class Libro(models.Model):
 
 
 class Order(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True, blank=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100, null=True)
@@ -34,7 +66,7 @@ class Order(models.Model):
         shipping = False
         orderitems = self.orderitem_set.all()
         for i in orderitems:
-            if i.libro.digital == False:
+            if not i.libro.digital:
                 shipping = True
         return shipping
 
@@ -61,7 +93,6 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=0)
     date_added = models.DateTimeField(auto_now_add=True)
 
-
     @property
     def get_total(self):
         total = self.libro.precioLibro * self.quantity
@@ -73,7 +104,7 @@ class OrderItem(models.Model):
 
 
 class TarjetaCompra(models.Model):
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     numeroTarjeta = models.IntegerField(null=False)
     nombreTitular = models.CharField(max_length=200, null=False)

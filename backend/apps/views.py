@@ -11,14 +11,12 @@ from django.http import JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
 
-from django.views import View
 from django.views.generic import (
     CreateView,
     DeleteView,
     DetailView,
     ListView,
     UpdateView,
-    TemplateView,
 )
 
 from .models import *
@@ -290,7 +288,7 @@ def updateItem(request):
 # ! Configuracion Email
 
 from django.core.mail import send_mail
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 
@@ -316,35 +314,40 @@ def contact_enviado(request):
 # -------------------------------------------------------------------------------
 
 
-from django.shortcuts import render
 from rest_framework import viewsets
-from rest_framework.response import Response
-from .models import Libro, Order, OrderItem, TarjetaCompra
-from django.contrib.auth.models import User
-from .serializers import (
-    LibroSerializer,
-    OrderSerializer,
-    OrderItemSerializer,
-    TarjetaCompraSerializer,
-)
+from rest_framework.permissions import IsAuthenticated
+from .models import Usuario, Libro, Order, OrderItem, TarjetaCompra
+from .serializers import UsuarioSerializer, LibroSerializer, OrderSerializer, OrderItemSerializer, TarjetaCompraSerializer
 
-# Create your views here.
+class UsuarioViewSet(viewsets.ModelViewSet):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioSerializer
+
 class LibroViewSett(viewsets.ModelViewSet):
     queryset = Libro.objects.all()
     serializer_class = LibroSerializer
-
+    permission_classes = [IsAuthenticated]
 
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
 
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
 
 class OrderItemViewSet(viewsets.ModelViewSet):
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
+    permission_classes = [IsAuthenticated]
 
+    def get_queryset(self):
+        return self.queryset.filter(order__user=self.request.user)
 
 class TarjetaCompraViewSet(viewsets.ModelViewSet):
     queryset = TarjetaCompra.objects.all()
     serializer_class = TarjetaCompraSerializer
+    permission_classes = [IsAuthenticated]
 
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)
