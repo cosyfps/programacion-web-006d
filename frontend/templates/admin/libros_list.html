@@ -84,9 +84,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 {% for libro in libros %}
                                 <tr style="border: 1px solid black;">
-                                    <!-- Datos del libro -->
                                     <td style="border: 1px solid black;" >{ libro.tituloLibro }</td>
                                     <td style="border: 1px solid black;" >{ libro.autorLibro }</td>
                                     <td style="border: 1px solid black;" >{ libro.anioLibro }</td>
@@ -117,15 +117,16 @@
                                     </td>
                                 </tr>
                                 {% endfor %}
+
                             </tbody>
                         </table>
                     </div>
                     <button style="margin-top: 2rem;" class="btn btn-primary">
-                        <a href="{% url 'libros_create' %}" style="color: white;">Agregar Libro</a>
+                        <a href="/frontend/templates/admin/libros_form.html" style="color: white;">Agregar Libro</a>
                     </button>
                 </div>
             </main>
-            
+
         </div>
     </div>
     <!-- Bootstrap Bundle with Popper -->
