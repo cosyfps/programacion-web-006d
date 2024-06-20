@@ -2,30 +2,26 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
 
 
-class Usuario(AbstractUser):
-    username = models.CharField(max_length=200, null=True, blank=True)
-    email = models.CharField(max_length=200, null=True, blank=True)
-    password = models.CharField(max_length=200, null=True, blank=True)
-    password_confirmation = models.CharField(max_length=200, null=True, blank=True)
+class User(AbstractUser):
     groups = models.ManyToManyField(
         Group,
-        related_name="libros_user_set",
+        related_name="custom_user_set",
         blank=True,
         help_text=(
-            "The groups this user belongs to. A user will get all permissions granted to each of their groups."
+            "Los grupos a los que pertenece este usuario. Un usuario obtendrá todos los permisos concedidos a cada uno de sus grupos."
         ),
-        verbose_name=("groups"),
+        verbose_name=("grupos"),
     )
     user_permissions = models.ManyToManyField(
         Permission,
-        related_name="libros_user_set",
+        related_name="custom_user_permissions",
         blank=True,
-        help_text=("Specific permissions for this user."),
-        verbose_name=("user permissions"),
+        help_text=("Permisos específicos para este usuario."),
+        verbose_name=("permisos de usuario"),
     )
 
     def __str__(self):
-        return self.username
+        return self.username if self.username else self.email
 
     class Meta:
         verbose_name = "usuario"
@@ -53,7 +49,7 @@ class Libro(models.Model):
 
 
 class Order(models.Model):
-    user = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     date_ordered = models.DateTimeField(auto_now_add=True)
     complete = models.BooleanField(default=False)
     transaction_id = models.CharField(max_length=100, null=True)
@@ -104,7 +100,7 @@ class OrderItem(models.Model):
 
 
 class TarjetaCompra(models.Model):
-    user = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     numeroTarjeta = models.IntegerField(null=False)
     nombreTitular = models.CharField(max_length=200, null=False)

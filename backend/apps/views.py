@@ -315,18 +315,35 @@ def contact_enviado(request):
 
 
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
-from .models import Usuario, Libro, Order, OrderItem, TarjetaCompra
-from .serializers import UsuarioSerializer, LibroSerializer, OrderSerializer, OrderItemSerializer, TarjetaCompraSerializer
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
-class UsuarioViewSet(viewsets.ModelViewSet):
-    queryset = Usuario.objects.all()
-    serializer_class = UsuarioSerializer
+from .models import (
+    User,
+    Libro,
+    Order,
+    OrderItem,
+    TarjetaCompra,
+)
+
+from .serializers import (
+    UserSerializer,
+    LibroSerializer,
+    OrderSerializer,
+    OrderItemSerializer,
+    TarjetaCompraSerializer,
+)
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
 
 class LibroViewSett(viewsets.ModelViewSet):
     queryset = Libro.objects.all()
     serializer_class = LibroSerializer
     permission_classes = [IsAuthenticated]
+
 
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
@@ -336,6 +353,7 @@ class OrderViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.queryset.filter(user=self.request.user)
 
+
 class OrderItemViewSet(viewsets.ModelViewSet):
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
@@ -343,6 +361,7 @@ class OrderItemViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return self.queryset.filter(order__user=self.request.user)
+
 
 class TarjetaCompraViewSet(viewsets.ModelViewSet):
     queryset = TarjetaCompra.objects.all()
