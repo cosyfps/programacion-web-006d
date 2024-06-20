@@ -52,15 +52,15 @@
     <div class="container-md" id="logincontent" style="margin-top: 50px;">
         <div class="row">
             <div class="col" id="loginbox">
-                 <form id="loginForm" method="POST">
+                <form id="loginForm" method="POST">
                     <br>
                     <h2 style="color: white;" >Iniciar Sesión</h2>
                     <div class="mb-3">
-                        <label style="margin-right: 340px; color: white;" for="loginUsername" class="form-label">Usuario:</label>
+                        <label for="loginUsername" class="form-label">Usuario:</label>
                         <input placeholder="Ingrese su usuario" type="text" class="form-control" id="loginUsername" name="username" required>
                     </div>
                     <div class="mb-3">
-                        <label style="margin-right: 310px; color: white;" for="loginPassword" class="form-label">Contraseña:</label>
+                        <label for="loginPassword" class="form-label">Contraseña:</label>
                         <input placeholder="Ingrese su contraseña" type="password" class="form-control" id="loginPassword" name="password" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
@@ -81,8 +81,9 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/frontend/static/javascript/signin.js"></script>
 </body>
 </html>

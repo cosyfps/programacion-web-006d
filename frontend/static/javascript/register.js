@@ -50,9 +50,9 @@ $(document).ready(function () {
                 },
                 error: function (response) {
                     if (response.responseJSON && response.responseJSON.username) {
-                        alert('ERROR: ' + response.responseJSON.username[0]);  // Mostrar mensaje de error específico
+                        alert('ERROR: ' + response.responseJSON.username[0]);  
                     } else {
-                        alert('ERROR: Usuario no se ha registrado.');  // Mensaje genérico de error
+                        alert('ERROR: Usuario no se ha registrado.');  
                     }
                     console.log(response);
                 }

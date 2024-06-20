@@ -1,36 +1,42 @@
 $(document).ready(function () {
-    $("#loginForm").validate({
+    $('#loginForm').validate({
         rules: {
-            username: {
+            loginUsername: {
                 required: true,
-                email: true
             },
-            password: {
-                required: true
-            }
+            loginPassword: {
+                required: true,
+                minlength: 4,
+            },
         },
         messages: {
-            username: {
-                required: "Por favor ingresa tu usuario."
+            loginUsername: {
+                required: "Por favor, ingrese su usuario",
             },
-            password: {
-                required: "Por favor ingresa tu contraseña"
-            }
+            loginPassword: {
+                required: "Por favor, ingrese su contraseña",
+                minlength: "La contraseña debe tener al menos 4 caracteres",
+            },
         },
         submitHandler: function (form) {
             $.ajax({
-                url: "{% url 'login' %}",
-                type: "POST",
-                data: $(form).serialize(), // Serialize el formulario para enviar los datos correctamente
+                url: 'http://localhost:8000/api/usuario/', 
+                type: 'GET', 
+                data: {
+                    username: $('#loginUsername').val(),
+                    password: $('#loginPassword').val(),
+                },
                 success: function (response) {
-                    // Redirecciona según la respuesta del servidor
-                    window.location.href = response.redirect_url;
+                    localStorage.setItem("access", response.access);
+                    localStorage.setItem("refresh", response.refresh);
+                    window.location.href = 'home_page_auth.html';
+                    console.log(response);
                 },
                 error: function (response) {
-                    alert("Error: Correo electrónico o contraseña incorrectos.");
+                    alert('Error: Usuario o contraseña incorrectos.');
+                    console.log(response);
                 }
             });
-            return false; // Evita que el formulario se envíe normalmente
         }
     });
 });
