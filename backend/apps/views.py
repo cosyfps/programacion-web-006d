@@ -315,7 +315,7 @@ def contact_enviado(request):
 
 
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
 
 from .models import (
     User,
@@ -342,7 +342,17 @@ class UserViewSet(viewsets.ModelViewSet):
 class LibroViewSett(viewsets.ModelViewSet):
     queryset = Libro.objects.all()
     serializer_class = LibroSerializer
-    permission_classes = [IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action == "list":
+            # Allow anyone to list the books
+            permission_classes = [AllowAny]
+        elif self.action == "retrieve":
+            permission_classes = [IsAuthenticated]
+        else:
+            # Only authenticated users can perform other actions (e.g., create, update, delete)
+            permission_classes = [IsAuthenticated]
+        return [permission() for permission in permission_classes]
 
 
 class OrderViewSet(viewsets.ModelViewSet):

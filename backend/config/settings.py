@@ -140,4 +140,11 @@ CORS_ALLOWED_ORIGINS = [
 
 APPEND_SLASH = False
 
+import os
 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "database")
+
+DEFAULT_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
