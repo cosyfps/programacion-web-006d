@@ -345,12 +345,13 @@ class LibroViewSett(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == "list":
-            # Allow anyone to list the books
+            # Permitir que cualquier usuario vea la lista de libros
             permission_classes = [AllowAny]
         elif self.action == "retrieve":
+            # Solo usuarios autenticados pueden ver los detalles de un libro
             permission_classes = [IsAuthenticated]
         else:
-            # Only authenticated users can perform other actions (e.g., create, update, delete)
+            # Solo los superusuarios pueden realizar otras acciones (crear, actualizar, eliminar libros)
             permission_classes = [IsAdminUser]
         return [permission() for permission in permission_classes]
 
