@@ -629,4 +629,8 @@ input[type="submit"]:hover {
   border-radius: 10px; /* Agregar bordes redondeados al formulario */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agregar sombra al formulario */
 }
-
+label.error {
+          color: rgb(199, 26, 26);
+          font-weight: bold;
+        }
+    
