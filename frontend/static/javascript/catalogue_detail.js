@@ -9,6 +9,7 @@ $(document).ready(function () {
             console.log('Detalles del libro:');
             console.log(response);
             mostrarDetallesLibro(response);
+            agregarBotonCarrito(libroId); // Agrega el botón "Añadir al carrito"
         },
         error: function (error) {
             console.log('Error al obtener los detalles del libro:');
@@ -32,5 +33,27 @@ $(document).ready(function () {
         var portadaImg = $('#portadaImg');
         portadaImg.attr('src', libro.portadaLibro);
         portadaImg.attr('alt', libro.tituloLibro);
+    }
+
+    function agregarBotonCarrito(libroId) {
+        var botonHTML = '<div class="row" id="downloadbtn" style="margin-top: 15px">';
+        botonHTML += '<div class="col"></div>';
+        botonHTML += '<div class="col" style="display: flex; justify-content: center; align-items: center">';
+        botonHTML += '<button id="addToCartBtn" data-libro="' + libroId + '" class="btn btn-success add-btn">Añadir al carrito</button>';
+        botonHTML += '</div>';
+        botonHTML += '<div class="col"></div>';
+        botonHTML += '</div>';
+
+        $('#downloadbtn').html(botonHTML); 
+    }
+
+    $(document).on('click', '#addToCartBtn', function () {
+        var libroId = $(this).data('libro');
+        agregarAlCarrito(libroId);
+    });
+
+    // Función para agregar el libro al carrito
+    function agregarAlCarrito(libroId) {
+        console.log('Agregando libro al carrito con ID:', libroId);
     }
 });
