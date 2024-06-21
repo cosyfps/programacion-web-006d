@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: 'http://localhost:8000/api/usuario/',  // Cambia la URL según la API de tu backend
+        url: 'http://localhost:8000/api/usuario/',  
         type: 'GET',
         success: function (response) {
             console.log('Listado de usuarios:');
@@ -27,7 +27,6 @@ $(document).ready(function () {
             tbody.append(row);
         });
 
-        // Agregar evento clic para botones de eliminar
         $('.delete-btn').on('click', function () {
             var userId = $(this).data('id');
             eliminarUsuario(userId);
@@ -44,6 +43,7 @@ $(document).ready(function () {
                     url: 'http://localhost:8000/api/usuario/',  
                     type: 'GET',
                     success: function (response) {
+                        console.log('Usuario eliminado correctamente');
                         mostrarUsuarios(response);
                     },
                     error: function (error) {

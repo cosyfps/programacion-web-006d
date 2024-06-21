@@ -35,10 +35,8 @@ class Libro(models.Model):
     anioLibro = models.IntegerField(null=True, blank=True)
     descripcionLibro = models.TextField(max_length=1000, null=True, blank=True)
     precioLibro = models.DecimalField(max_digits=10, decimal_places=2)
-    digital = models.BooleanField(default=True, null=True, blank=True)
     stock = models.BooleanField(default=True, null=True, blank=True)
     portadaLibro = models.ImageField(upload_to="images/", null=True, blank=True)
-    archivoLibro = models.FileField(upload_to="documents/", null=True, blank=True)
 
     def __str__(self):
         return self.tituloLibro

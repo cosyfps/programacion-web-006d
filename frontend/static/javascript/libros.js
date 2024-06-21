@@ -24,13 +24,33 @@ $(document).ready(function () {
                 '<td style="border: 1px solid black;" >' + libro.anioLibro + '</td>' +
                 '<td style="border: 1px solid black;" >' + libro.descripcionLibro + '</td>' +
                 '<td style="border: 1px solid black;" >' + libro.precioLibro + '</td>' +
-                '<td style="border: 1px solid black;" >' + libro.digital + '</td>' +
                 '<td style="border: 1px solid black;" >' + (libro.stock ? 'Sí' : 'No') + '</td>' +
                 '<td style="border: 1px solid black;" ><img src="' + libro.portadaLibro + '" alt="Portada" style="width: 100px;"></td>' +
-                '<td style="border: 1px solid black;" ><button class="btn btn-primary">Editar</button></td>' +
-                '<td style="border: 1px solid black;" ><button class="btn btn-danger">Eliminar</button></td>' +
+                '<td style="border: 1px solid black;" ><a href="/frontend/templates/admin/libros_edit.html?id=' + libro.id + '" class="btn btn-primary">Editar</a></td>' +
+                '<td style="border: 1px solid black;" ><button class="btn btn-danger delete-btn" data-id="' + libro.id + '">Eliminar</button></td>' +
                 '</tr style="border: 1px solid black;" >';
             tbody.append(row);
         });
+
+        $('.delete-btn').on('click', function () {
+            var libroId = $(this).data('id');
+            eliminarLibro(libroId);
+        });
     }
+
+    function eliminarLibro(libroId) {
+        $.ajax({
+            url: 'http://localhost:8000/api/libro/' + libroId + '/',  
+            type: 'DELETE',
+            success: function (response) {
+                console.log('Libro eliminado correctamente');
+                mostrarLibros(); 
+            },
+            error: function (error) {
+                console.log('Error al eliminar el libro:');
+                console.log(error);
+            }
+        });
+    }
+
 });
