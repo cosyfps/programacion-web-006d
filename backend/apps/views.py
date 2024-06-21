@@ -351,7 +351,7 @@ class LibroViewSett(viewsets.ModelViewSet):
             permission_classes = [IsAuthenticated]
         else:
             # Only authenticated users can perform other actions (e.g., create, update, delete)
-            permission_classes = [IsAuthenticated]
+            permission_classes = [IsAdminUser]
         return [permission() for permission in permission_classes]
 
 
