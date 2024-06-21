@@ -67,33 +67,19 @@
     <!-- Content -->
     <div class="container-md" id="infobook">
         <div class="row" style="padding-top: 4rem">
-            <div class="col-lg-4" style="display: flex; align-items: center; margin-top: 100px;">
+            <div class="col-lg-4" style="display: flex; align-items: center; margin-top: 100px;" id="detallesLibro">
 
-                {% if libro.portadaLibro %}
-                    <img src="{{ libro.portadaLibro.url }}" alt="{{ libro.tituloLibro }}" class="img-fluid">
-                {% else %}
-                    N/A
-                {% endif %}
+                <img id="portadaImg" src="" alt="">
+
                 <div class="col-lg-7" id="infotxt" style="margin-left: 100px; width: 800px; text-align: left; background-color: rgb(65, 18, 18, 0.8);">
-                    <h1 class="tittlebk">{{ libro.tituloLibro }}</h1>
-                    <h4 class="autorbk">{{ libro.autorLibro }} <br> {{ libro.anioLibro }}</h4>
-                    <p class="reviewbk">{{ libro.descripcionLibro }}</p>
-                    <h4 class="tittlebk" style="color: rgb(255, 255, 255);">${{ libro.precioLibro }}  
-                    {% if libro.digital %}
-                        | Disponible en Tienda: No
-                    {% else %}
-                        | Disponible en Tienda: Si
-                    {% endif %} </h4>
-                    
+
+                <!-- Aquí se mostrarán los detalles del libro -->
+
                 </div>
             </div>
         </div>
         <div class="row" id="downloadbtn" style="margin-top: 15px">
-            <div class="col"></div>
-            <div class="col" style="display: flex; justify-content: center; align-items: center">
-                    <button data-libro={{libro.id}} data-action="add" class="btn btn-success add-btn update-cart"> Añadir al carrito</button>
-            </div>
-            <div class="col"></div>
+            <!-- Botón para añadir al carrito -->
         </div>
     </div>
     
@@ -108,6 +94,7 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="/frontend/static/javascript/catalogue_detail.js"></script>
     <script>
         var user = '{{ request.user.username }}';
 
@@ -127,6 +114,6 @@
         }
         var csrftoken = getToken('csrftoken');
     </script>
-    <script src="javascript/cart.js"></script>
+    <script src="/frontend/static/javascript/cart.js"></script>
 </body>
 </html>

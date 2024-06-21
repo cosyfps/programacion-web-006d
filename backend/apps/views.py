@@ -349,7 +349,7 @@ class LibroViewSett(viewsets.ModelViewSet):
             permission_classes = [AllowAny]
         elif self.action == "retrieve":
             # Solo usuarios autenticados pueden ver los detalles de un libro
-            permission_classes = [IsAuthenticated]
+            permission_classes = [AllowAny]
         else:
             # Solo los superusuarios pueden realizar otras acciones (crear, actualizar, eliminar libros)
             permission_classes = [IsAdminUser]
