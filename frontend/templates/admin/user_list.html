@@ -51,7 +51,8 @@
     <div class="container-fluid">
         <div class="row">
             <nav class="col-md-3 col-lg-2 d-md-block sidebar">
-                <ul class="nav flex-column">
+                <div class="logo mb-3" style="height: 300px; width: 300px; margin-top: -50px;" ></div>
+                <ul class="nav flex-column" style="margin-top: -100px;" >
                     <li class="nav-item">
                         <a class="nav-link sidebar-item" href="/frontend/templates/admin/libros_list.html">Libros</a>
                     </li>
@@ -71,27 +72,16 @@
                         <table id="usersTable" class="table table-dark table-striped table-sm">
                             <thead>
                                 <tr>
-                                    <th style="border: 1px solid black;" >ID</th>
-                                    <th style="border: 1px solid black;" >Nombre</th>
-                                    <th style="border: 1px solid black;" >Email</th>
-                                    <th style="border: 1px solid black;" >Admin</th>
-                                    <th style="border: 1px solid black;" >Eliminar</th>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Admin</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
-
-                                {% for user in users %}
-                                <tr >
-                                    <td style="border: 1px solid black;" padding: 8px;">{{ user.id }}</td>
-                                    <td style="border: 1px solid black;" padding: 8px;">{{ user.username }}</td>
-                                    <td style="border: 1px solid black;" padding: 8px;">{{ user.email }}</td>
-                                    <td style="border: 1px solid black;" padding: 8px;">{{ user.is_superuser }}</td>
-                                    <td padding: 8px;">
-                                        <a href="/frontend/templates/admin/user_confirm_delete.html" class="btn btn-danger">Eliminar</a>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-
+                                <!-- user.js agregara a los usuarios de la base de datos -->
                             </tbody>
                         </table>
                     </div>
