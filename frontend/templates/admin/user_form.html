@@ -68,29 +68,21 @@
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div style="margin-top: 100px;" class="content">
-                    <h1>Agregar Nuevo Usuario</h1>
-                    <form method="post">
-                        <div class="form-group">
-                            <label for="username">Nombre de usuario</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
+                    <h1>Agregar Usuario</h1>
+                    <form id="userForm">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Usuario</label>
+                            <input type="text" class="form-control" id="username" required>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
                         </div>
-                        <div class="form-group">
-                            <label for="password">Contraseña</label>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña:</label>
                             <input type="password" class="form-control" id="password" name="password" required>
                         </div>
-                        <div class="form-group">
-                            <label for="confirm_password">Confirmar Contraseña</label>
-                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="is_superuser">¿Es Administrador?</label>
-                            <input type="checkbox" id="is_superuser" name="is_superuser">
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+                        <button type="submit" class="btn btn-primary">Agregar</button>
                     </form>
                 </div>
             </main>
@@ -99,6 +91,6 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src=""></script>
+    <script src="/frontend/static/javascript/user_form.js"></script>
 </body>
 </html>

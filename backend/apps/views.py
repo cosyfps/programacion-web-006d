@@ -314,8 +314,11 @@ def contact_enviado(request):
 # -------------------------------------------------------------------------------
 
 
+from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
+from rest_framework.response import Response
+
 
 from .models import (
     User,
@@ -338,6 +341,17 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            # Registro de errores
+            print(serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class LibroViewSett(viewsets.ModelViewSet):
     queryset = Libro.objects.all()
@@ -345,14 +359,14 @@ class LibroViewSett(viewsets.ModelViewSet):
 
     def get_permissions(self):
         if self.action == "list":
-            # Permitir que cualquier usuario vea la lista de libros
             permission_classes = [AllowAny]
+
         elif self.action == "retrieve":
-            # Solo usuarios autenticados pueden ver los detalles de un libro
             permission_classes = [AllowAny]
+
         else:
-            # Solo los superusuarios pueden realizar otras acciones (crear, actualizar, eliminar libros)
             permission_classes = [IsAdminUser]
+
         return [permission() for permission in permission_classes]
 
 
