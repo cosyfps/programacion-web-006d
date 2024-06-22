@@ -18,4 +18,5 @@ router.register(r"tarjetaCompra", TarjetaCompraViewSet, basename="tarjetacompra"
 
 urlpatterns = [
     path("", include(router.urls)),
+    path('usuario/retrieve-by-username/', UserViewSet.as_view({'post': 'retrieve_by_username'}), name='user-retrieve-by-username'),
 ]

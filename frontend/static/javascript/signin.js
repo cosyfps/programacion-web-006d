@@ -20,22 +20,21 @@ $(document).ready(function () {
         },
         submitHandler: function (form) {
             $.ajax({
-                url: 'http://localhost:8000/api/usuario/', 
-                type: 'GET', 
-                data: {
-                    username: $('#loginUsername').val(),
-                    password: $('#loginPassword').val(),
-                },
-                success: function (response) {
-                    localStorage.setItem("access", response.access);
-                    localStorage.setItem("refresh", response.refresh);
-                    window.location.href = 'home_page_auth.html';
-                    console.log(response);
-                },
-                error: function (response) {
-                    alert('Error: Usuario o contraseña incorrectos.');
-                    console.log(response);
-                }
+              url: "http://localhost:8000/api/usuario/retrieve-by-username/",
+              type: "POST",
+              data: {
+                username: $("#loginUsername").val(),
+                password: $('#loginPassword').val(),
+              },
+              success: function (response) {
+                localStorage.setItem("access", response.access);
+                localStorage.setItem("refresh", response.refresh);
+                window.location.href = 'home_page_auth.html';
+              },
+              error: function (response) {
+                alert("Error: Usuario o contraseña incorrectos.");
+                console.log(response);
+              },
             });
         }
     });

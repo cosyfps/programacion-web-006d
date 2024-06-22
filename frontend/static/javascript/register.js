@@ -44,8 +44,8 @@ $(document).ready(function () {
                     password: $('#registerPassword').val(),
                 },
                 success: function (response) {
-                    alert('Usuario registrado correctamente.');
                     window.location.href = 'signin.html'; 
+                    alert('Usuario registrado correctamente.');
                     console.log(response);
                 },
                 error: function (response) {
