@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: 'http://localhost:8000/api/libro/', 
+        url: 'http://localhost:8000/libro/', 
         type: 'GET',
         success: function (response) {
             console.log('Listado de libros:');

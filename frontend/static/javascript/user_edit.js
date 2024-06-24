@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     function obtenerUsuario(userId) {
         $.ajax({
-            url: 'http://localhost:8000/api/usuario/' + userId + '/',  
+            url: 'http://localhost:8000/usuario/' + userId + '/',  
             type: 'GET',
             success: function (usuario) {
                 $('#userId').val(usuario.id);
@@ -39,7 +39,7 @@ $(document).ready(function () {
         };
     
         $.ajax({
-            url: 'http://localhost:8000/api/usuario/' + userId + '/',
+            url: 'http://localhost:8000/usuario/' + userId + '/',
             type: 'PUT',
             data: formData,
             success: function (response) {

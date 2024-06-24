@@ -13,7 +13,7 @@ $(document).ready(function () {
         formData.append('portadaLibro', $('#portadaLibro')[0].files[0]);
 
         $.ajax({
-            url: 'http://localhost:8000/api/libro/',
+            url: 'http://localhost:8000/libro/',
             type: 'POST',
             data: formData,
             contentType: false,

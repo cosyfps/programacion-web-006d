@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: 'http://localhost:8000/api/usuario/',  
+        url: 'http://localhost:8000/usuario/',  
         type: 'GET',
         success: function (response) {
             console.log('Listado de usuarios:');
@@ -35,12 +35,12 @@ $(document).ready(function () {
 
     function eliminarUsuario(userId) {
         $.ajax({
-            url: 'http://localhost:8000/api/usuario/' + userId + '/',  
+            url: 'http://localhost:8000/usuario/' + userId + '/',  
             type: 'DELETE',
             success: function (response) {
                 console.log('Usuario eliminado correctamente');
                 $.ajax({
-                    url: 'http://localhost:8000/api/usuario/',  
+                    url: 'http://localhost:8000/usuario/',  
                     type: 'GET',
                     success: function (response) {
                         console.log('Usuario eliminado correctamente');

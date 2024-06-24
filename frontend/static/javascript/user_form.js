@@ -9,7 +9,7 @@ $(document).ready(function () {
         };
 
         $.ajax({
-            url: 'http://localhost:8000/api/usuario/', 
+            url: 'http://localhost:8000/usuario/', 
             type: 'POST',
             data: formData,
             success: function (response) {

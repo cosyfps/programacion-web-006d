@@ -3,7 +3,7 @@ $(document).ready(function () {
     var libroId = urlParams.get('id'); // Obtiene el ID del libro de los parámetros de la URL
 
     $.ajax({
-        url: 'http://localhost:8000/api/libro/' + libroId + '/', 
+        url: 'http://localhost:8000/libro/' + libroId + '/', 
         type: 'GET',
         success: function (response) {
             console.log('Detalles del libro:');
@@ -13,7 +13,7 @@ $(document).ready(function () {
         },
         error: function (error) {
             console.log('Error al obtener los detalles del libro:');
-            console.log('URL de la solicitud:', 'http://localhost:8000/api/libro/' + libroId + '/');
+            console.log('URL de la solicitud:', 'http://localhost:8000/libro/' + libroId + '/');
             console.log(error);
         }
     });

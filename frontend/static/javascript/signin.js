@@ -20,7 +20,7 @@ $(document).ready(function () {
         },
         submitHandler: function (form) {
             $.ajax({
-              url: "http://localhost:8000/api/usuario/retrieve-by-username/",
+              url: "http://localhost:8000/usuario/retrieve-by-username/",
               type: "POST",
               data: {
                 username: $("#loginUsername").val(),

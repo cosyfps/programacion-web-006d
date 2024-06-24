@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: 'http://localhost:8000/api/libro/', 
+        url: 'http://localhost:8000/libro/', 
         type: 'GET',
         success: function (response) {
             console.log('Listado de libros:');
@@ -40,7 +40,7 @@ $(document).ready(function () {
 
     function eliminarLibro(libroId) {
         $.ajax({
-            url: 'http://localhost:8000/api/libro/' + libroId + '/',  
+            url: 'http://localhost:8000/libro/' + libroId + '/',  
             type: 'DELETE',
             success: function (response) {
                 console.log('Libro eliminado correctamente');

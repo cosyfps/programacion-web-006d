@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     function obtenerLibro(libroId) {
         $.ajax({
-            url: 'http://localhost:8000/api/libro/' + libroId + '/',
+            url: 'http://localhost:8000/libro/' + libroId + '/',
             type: 'GET',
             success: function (libro) {
                 $('#libroId').val(libro.id);
@@ -51,7 +51,7 @@ $(document).ready(function () {
         formData.append('portadaLibro', $('#portadaLibro')[0].files[0]);
 
         $.ajax({
-        url: 'http://localhost:8000/api/libro/' + libroId + '/',
+        url: 'http://localhost:8000/libro/' + libroId + '/',
         type: 'PUT',
         data: formData,
         contentType: false,
