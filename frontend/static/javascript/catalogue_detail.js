@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var urlParams = new URLSearchParams(window.location.search);
-    var libroId = urlParams.get('id'); // Obtiene el ID del libro de los parámetros de la URL
+    var libroId = urlParams.get('id'); 
 
     $.ajax({
         url: 'http://localhost:8000/libro/' + libroId + '/', 
@@ -9,7 +9,7 @@ $(document).ready(function () {
             console.log('Detalles del libro:');
             console.log(response);
             mostrarDetallesLibro(response);
-            agregarBotonCarrito(libroId); // Agrega el botón "Añadir al carrito"
+            agregarBotonCarrito(libroId); 
         },
         error: function (error) {
             console.log('Error al obtener los detalles del libro:');
@@ -52,7 +52,6 @@ $(document).ready(function () {
         agregarAlCarrito(libroId);
     });
 
-    // Función para agregar el libro al carrito
     function agregarAlCarrito(libroId) {
         console.log('Agregando libro al carrito con ID:', libroId);
     }
