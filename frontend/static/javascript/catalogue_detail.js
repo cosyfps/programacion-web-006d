@@ -9,7 +9,7 @@ $(document).ready(function () {
             console.log('Detalles del libro:');
             console.log(response);
             mostrarDetallesLibro(response);
-            agregarBotonCarrito(libroId); 
+            agregarBotonCarrito(response); // Pasa la respuesta completa
         },
         error: function (error) {
             console.log('Error al obtener los detalles del libro:');
@@ -35,24 +35,47 @@ $(document).ready(function () {
         portadaImg.attr('alt', libro.tituloLibro);
     }
 
-    function agregarBotonCarrito(libroId) {
+    function agregarBotonCarrito(libro) {
         var botonHTML = '<div class="row" id="downloadbtn" style="margin-top: 15px">';
         botonHTML += '<div class="col"></div>';
         botonHTML += '<div class="col" style="display: flex; justify-content: center; align-items: center">';
-        botonHTML += '<button id="addToCartBtn" data-libro="' + libroId + '" class="btn btn-success add-btn">Añadir al carrito</button>';
+        botonHTML += '<button id="addToCartBtn" data-libro="' + libro.id + '" class="btn btn-success add-btn">Añadir al carrito</button>';
         botonHTML += '</div>';
         botonHTML += '<div class="col"></div>';
         botonHTML += '</div>';
 
         $('#downloadbtn').html(botonHTML); 
+
+        $(document).on('click', '#addToCartBtn', function () {
+            agregarAlCarrito(libro);
+        });
     }
 
-    $(document).on('click', '#addToCartBtn', function () {
-        var libroId = $(this).data('libro');
-        agregarAlCarrito(libroId);
-    });
+    function agregarAlCarrito(libro) {
+        console.log('Agregando libro al carrito con ID:', libro.id);
 
-    function agregarAlCarrito(libroId) {
-        console.log('Agregando libro al carrito con ID:', libroId);
+        var cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        var existingBookIndex = cart.findIndex(function (item) {
+            return item.id === libro.id;
+        });
+
+        if (existingBookIndex === -1) {
+            cart.push({
+                id: libro.id,
+                tituloLibro: libro.tituloLibro,
+                autorLibro: libro.autorLibro,
+                generoLibro: libro.generoLibro,
+                anioLibro: libro.anioLibro,
+                precio: libro.precioLibro,
+                portada: libro.portadaLibro,
+                cantidad: 1
+            });
+        } else {
+            cart[existingBookIndex].cantidad += 1;
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        console.log('Libro agregado al carrito:', libro);
     }
 });
