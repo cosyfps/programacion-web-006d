@@ -37,7 +37,7 @@ $(document).ready(function () {
             totalItems += item.cantidad;
         });
 
-        var checkoutBtnHtml = '<button class="btn btn-success checkout-btn">Proceder al Checkout ($' + cartTotal.toFixed(2) + ')</button>';
+        var checkoutBtnHtml = 
         checkoutBtnDiv.html(checkoutBtnHtml);
 
         $('#totalItems').text(totalItems);

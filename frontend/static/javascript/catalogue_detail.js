@@ -2,6 +2,7 @@ $(document).ready(function () {
     var urlParams = new URLSearchParams(window.location.search);
     var libroId = urlParams.get('id'); 
 
+    // Obtener detalles del libro mediante AJAX al cargar la página
     $.ajax({
         url: 'http://localhost:8000/libro/' + libroId + '/', 
         type: 'GET',
@@ -18,6 +19,7 @@ $(document).ready(function () {
         }
     });
 
+    // Función para mostrar los detalles del libro en la página
     function mostrarDetallesLibro(libro) {
         var detallesLibroDiv = $('#infotxt');
 
@@ -35,6 +37,7 @@ $(document).ready(function () {
         portadaImg.attr('alt', libro.tituloLibro);
     }
 
+    // Función para agregar el botón "Añadir al carrito" dinámicamente
     function agregarBotonCarrito(libro) {
         var botonHTML = '<div class="row" id="downloadbtn" style="margin-top: 15px">';
         botonHTML += '<div class="col"></div>';
@@ -51,6 +54,7 @@ $(document).ready(function () {
         });
     }
 
+    // Función para manejar la adición de libros al carrito
     function agregarAlCarrito(libro) {
         console.log('Agregando libro al carrito con ID:', libro.id);
 
@@ -77,5 +81,18 @@ $(document).ready(function () {
 
         localStorage.setItem('cart', JSON.stringify(cart));
         console.log('Libro agregado al carrito:', libro);
+
+        // Actualizar la burbuja de cantidad en el icono de carrito
+        actualizarContadorCarrito();
+    }
+
+    // Función para actualizar el contador de cantidad en el icono de carrito
+    function actualizarContadorCarrito() {
+        var cart = JSON.parse(localStorage.getItem('cart')) || [];
+        var totalItems = cart.reduce(function (total, item) {
+            return total + item.cantidad;
+        }, 0);
+
+        $('#cart-total').text(totalItems);
     }
 });
