@@ -37,7 +37,7 @@ $(document).ready(function () {
             totalItems += item.cantidad;
         });
 
-        var checkoutBtnHtml = 
+        var checkoutBtnHtml =
         checkoutBtnDiv.html(checkoutBtnHtml);
 
         $('#totalItems').text(totalItems);
@@ -52,7 +52,7 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.checkout-btn', function () {
-        console.log('Proceder al checkout');
+        window.location.href = '/checkout'; // Redireccionar al checkout
     });
 
     function actualizarCantidad(libroId, action) {
