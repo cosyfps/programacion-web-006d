@@ -49,7 +49,7 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.checkout-btn', function () {
-        window.location.href = '/checkout'; // Redireccionar al checkout
+        window.location.href = '#'; // Redireccionar al checkout
     });
 
     function actualizarCantidad(libroId, action) {
