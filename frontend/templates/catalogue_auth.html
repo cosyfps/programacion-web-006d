@@ -51,7 +51,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fw-bold fs-4" href="/frontend/templates/signin.html"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                        <a class="nav-link fw-bold fs-4" id="logout-link" href="/frontend/templates/signin.html"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
                     </li>
                 </ul>
             </div>
@@ -97,11 +97,13 @@
     <script src="/frontend/static/javascript/catalogue_auth.js"></script>
     <script src="/frontend/static/javascript/cart.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
         function clearLocalStorage() {
             localStorage.clear();
         }
 
         document.getElementById('logout-link').addEventListener('click', clearLocalStorage);
+    });
     </script>
 </body>
 </html>
